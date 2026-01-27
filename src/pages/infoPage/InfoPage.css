@@ -1,38 +1,195 @@
-.details-container {
+@import "../login/Login.css";
+
+.info-container {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-.details-content {
-    background: var(--card-bg);
+.info-container h2 {
     color: var(--gold-primary);
-    background: linear-gradient(
-        90deg,
-        rgba(20, 24, 28, 1) 0%,
-        rgba(20, 24, 28, 0.8) 65%
-    );
-    border: 0.6px solid var(--gold-muted);
-    
-    padding: 40px 60px;
-    max-width: 600px;
+}
+
+.top-logo {
+    max-width: 150px;
+    position: absolute;
+    top: 0;
+}
+
+/* Stage 1 styles */
+
+.stage1-form {
     width: 100%;
-    
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-    text-align: center;
+    max-width: 450px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.details-content h1 {
-    margin: 0 0 20px 0;
-    font-size: 2rem;
-    letter-spacing: 0.5px;
+.avatar-circle {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.details-content p {
-    margin: 0;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    color: var(--text-main);
+.avatar-circle.large {
+    width: 100px;
+    height: 100px;
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.avatar-circle.small {
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    cursor: pointer;
+}
+
+.selected {
+    box-shadow: 0 0 25px rgba(26, 88, 127, 0.8);
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stage1-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.skip-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 0;
+    background-color: transparent;
+    color: var(--gold-primary);
+    border: 1px solid transparent;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: serif;
+}
+
+.skip-button:hover {
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-muted);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: serif;
+}
+
+.avatars-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.avatar-image {
+    max-width: 50px !important;
+}
+
+/* Stage 2 styles */
+
+.stage2-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.stage2-main-content-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.stage2-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    width: 100%;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        180deg,
+        rgba(20, 24, 28, 0.7) 0%,
+        rgba(10, 12, 14, 0.9) 100%
+    );
+
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.continue-button {
+    width: 150px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-muted);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.continue-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+}
+
+.back-button {
+    width: 150px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--btn-add-color);
+    border: 1px solid var(--btn-add-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
 }
