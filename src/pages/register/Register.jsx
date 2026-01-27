@@ -1,43 +1,30 @@
 import "./Register.css";
 
-import logo from "../../../public/images/logo.png";
-import silhouette from "../../../public/images/silhouette.png";
+import logo from "/images/logo.png";
+import silhouette from "/images/silhouette.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
-    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
 
     const submitRegister = (e) => {
         e.preventDefault();
 
-        // Client-side validation
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!");
-            return;
-        }
-
-        if (password.length < 6) {
-            alert("Password must be at least 6 characters long!");
-            return;
-        }
-
         // Simulate successful registration
-        alert(`Registration successful! Welcome, ${username}`);
+        alert(`Registration successful! Welcome, ${email}`);
 
         // Redirect to details page
-        navigate("/details");
+        navigate("/info");
     };
 
     return (
         <div
             className="login-container"
             style={{
-                backgroundImage: `url(../../../public/images/background.png)`,
+                backgroundImage: `url(/images/background.png)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
@@ -45,23 +32,14 @@ function Register() {
             <div className="form-container">
                 <img src={logo} alt="Logo" />
                 <div className="form-text-container">
-                    <h2>Create Account</h2>
-                    <p>Sign up for a new account</p>
+                    <h2>Welcome!</h2>
+                    <p>Create your account</p>
                 </div>
                 <form onSubmit={submitRegister} className="login-form">
-                    <label htmlFor="register-username">
-                        Username
-                        <input
-                            type="text"
-                            required
-                            name="register-username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                    </label>
                     <label htmlFor="register-email">
                         Email address
                         <input
+                            placeholder="Enter your email"
                             type="email"
                             required
                             name="register-email"
@@ -72,21 +50,12 @@ function Register() {
                     <label htmlFor="register-pass">
                         Password
                         <input
+                            placeholder="Enter your password"
                             type="password"
                             required
                             name="register-pass"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </label>
-                    <label htmlFor="register-confirm-pass">
-                        Confirm Password
-                        <input
-                            type="password"
-                            required
-                            name="register-confirm-pass"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                     </label>
                     <button type="submit" className="login-button">

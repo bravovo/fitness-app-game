@@ -1,10 +1,12 @@
 import "./Login.css";
 
-import logo from "../../../public/images/logo.png";
-import silhouette from "../../../public/images/silhouette.png";
+import logo from "/images/logo.png";
+import silhouette from "/images/silhouette.png";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,13 +17,14 @@ function Login() {
 
         setEmail("");
         setPassword("");
+        navigate("/info");
     };
 
     return (
         <div
             className="login-container"
             style={{
-                backgroundImage: `url(../../../public/images/background.png)`,
+                backgroundImage: `url(/images/background.png)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
@@ -36,7 +39,9 @@ function Login() {
                     <label htmlFor="login-email">
                         Email address
                         <input
+                            placeholder="Enter your email"
                             type="email"
+                            value={email}
                             required
                             name="login-email"
                             onChange={(e) => setEmail(e.target.value)}
@@ -45,8 +50,10 @@ function Login() {
                     <label htmlFor="login-pass">
                         Password
                         <input
+                            placeholder="Enter your password"
                             type="password"
                             required
+                            value={password}
                             name="login-pass"
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -55,7 +62,7 @@ function Login() {
                         Sign in
                     </button>
                 </form>
-                <a href="#" className="forgot-pass-link">
+                <a href="/forgot-password" className="forgot-pass-link">
                     Forgot password?
                 </a>
                 <p className="sign-up-para">

@@ -87,7 +87,7 @@ input:focus {
 }
 
 input::placeholder {
-    color: #555;
+    color: #fff;
 }
 
 .login-button {

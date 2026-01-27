@@ -1,21 +1,21 @@
-import "./DetailsPage.css";
+import "./InfoPage.css";
 
-function DetailsPage() {
+function InfoPage() {
     return (
         <div
             className="details-container"
             style={{
-                backgroundImage: `url(../../../public/images/background.png)`,
+                backgroundImage: `url(/images/background.png)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
         >
             <div className="details-content">
-                <h1>Details Page</h1>
-                <p>Welcome to the details page!</p>
+                <h1>Info Page</h1>
+                <p>Welcome to the Info page!</p>
             </div>
         </div>
     );
 }
 
-export default DetailsPage;
+export default InfoPage;
