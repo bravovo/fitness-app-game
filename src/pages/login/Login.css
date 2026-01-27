@@ -1,0 +1,148 @@
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form-container {
+    background: var(--card-bg);
+    color: var(--gold-primary);
+    background: linear-gradient(
+        90deg,
+        rgba(20, 24, 28, 1) 0%,
+        rgba(20, 24, 28, 0.8) 65%
+    );
+    border: 0.6px solid var(--gold-muted);
+
+    padding: 20px 30px;
+    max-width: 500px;
+    width: 100%;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.form-container img {
+    max-width: 200px;
+}
+
+.form-container label {
+    display: block;
+    text-align: left;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.form-text-container {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-text-container h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.form-text-container p {
+    margin: 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+input {
+    font-family: inherit;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--input-bg);
+    border: 1px solid #333;
+    color: #fff;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    letter-spacing: 0.5px;
+}
+
+input:focus {
+    outline: none;
+    border-bottom-color: var(--gold-primary);
+}
+
+input::placeholder {
+    color: #555;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-muted);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: serif;
+}
+
+.login-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+}
+
+.login-button:focus {
+    outline: none;
+    box-shadow: 0 0 8px var(--gold-primary);
+}
+
+.sign-up-para {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.sign-up-para a {
+    color: var(--gold-primary);
+}
+
+.sign-up-para a:hover {
+    text-decoration: underline;
+}
+
+.forgot-pass-link {
+    font-size: 1rem;
+    color: var(--text-main);
+    border: 1px solid transparent;
+}
+
+.forgot-pass-link:hover {
+    color: var(--text-main);
+    border-bottom: 1px solid var(--text-main);
+}
+
+.login-page-image {
+    max-width: 400px;
+    height: auto;
+}
