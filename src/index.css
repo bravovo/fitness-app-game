@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -37,9 +41,11 @@ body {
     margin: 0;
     font-family: "Cinzel", serif;
     background-color: var(--dark-bg);
+    background-attachment: fixed;
     background-image: url(/images/background.png);
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 h1 {
