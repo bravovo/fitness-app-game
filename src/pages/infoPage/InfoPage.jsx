@@ -5,6 +5,7 @@ import logo from "/images/logo.png";
 import { avatars } from "../../data/constants";
 
 import silhouette from "/images/silhouette.png";
+import Tooltip from "../../components/Tooltip/Tooltip";
 
 function InfoPage() {
     const [_user, setUser] = useState({
@@ -45,6 +46,11 @@ function InfoPage() {
         e.preventDefault();
         if (username.trim().length < 3) {
             alert("Please enter a valid username with at least 3 characters.");
+            return;
+        }
+
+        if (username.trim().length > 20) {
+            alert("Username cannot exceed 20 characters.");
             return;
         }
 
@@ -124,20 +130,35 @@ function InfoPage() {
                 return (
                     <div className="stage2-container">
                         <div className="stage2-main-content-container">
-                            <div className="form-container">
-                                <div className="form-text-container">
+                            <div className="form-container stage2-form-container">
+                                <div className="form-text-container stage-text-container">
                                     <h2>What's your user name?</h2>
+                                    <Tooltip text="This is the name other users will see you as">
+                                        <span className="stage-text-tooltip">
+                                            i
+                                        </span>
+                                    </Tooltip>
                                 </div>
-                                <input
-                                    type="text"
-                                    name="username"
-                                    value={username}
-                                    onChange={(e) =>
-                                        setUsername(e.target.value)
-                                    }
-                                    id=""
-                                    placeholder="Enter your username"
-                                />
+                                <label
+                                    className={`stage2-input-label ${
+                                        username.length > 20
+                                            ? "input-error"
+                                            : ""
+                                    }`}
+                                >
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        value={username}
+                                        onChange={(e) =>
+                                            setUsername(e.target.value)
+                                        }
+                                        id=""
+                                        placeholder="Enter your username"
+                                        className="stage2-input"
+                                    />
+                                    <span>{username.length}/20</span>
+                                </label>
                             </div>
                             <div>
                                 <img
@@ -147,7 +168,7 @@ function InfoPage() {
                                 />
                             </div>
                         </div>
-                        <div className="stage2-controls">
+                        <div className="stage-controls">
                             <button
                                 className="back-button"
                                 onClick={() => setStage((prev) => prev - 1)}

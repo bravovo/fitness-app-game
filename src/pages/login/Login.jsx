@@ -36,7 +36,7 @@ function Login() {
                     <p>Sign in your account</p>
                 </div>
                 <form onSubmit={submitLogin} className="login-form">
-                    <label htmlFor="login-email">
+                    <label htmlFor="login-email form-label">
                         Email address
                         <input
                             placeholder="Enter your email"
@@ -47,7 +47,7 @@ function Login() {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </label>
-                    <label htmlFor="login-pass">
+                    <label htmlFor="login-pass form-label">
                         Password
                         <input
                             placeholder="Enter your password"

@@ -54,7 +54,7 @@ function ForgotPassword() {
                 </div>
                 {stage === 1 ? (
                     <form onSubmit={submitStage1} className="login-form">
-                        <label htmlFor="login-email">
+                        <label htmlFor="login-email form-label">
                             Your registered email address
                             <input
                                 placeholder="Enter your email address"
@@ -71,7 +71,7 @@ function ForgotPassword() {
                     </form>
                 ) : (
                     <form onSubmit={submitStage2} className="login-form">
-                        <label htmlFor="login-pass">
+                        <label htmlFor="login-pass form-label">
                             New password
                             <input
                                 placeholder="Enter your new password"
@@ -82,7 +82,7 @@ function ForgotPassword() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </label>
-                        <label htmlFor="login-pass">
+                        <label htmlFor="login-pass form-label">
                             Confirm new password
                             <input
                                 value={confirmPassword}

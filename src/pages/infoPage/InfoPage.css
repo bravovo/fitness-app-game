@@ -19,6 +19,71 @@
     top: 0;
 }
 
+.stage-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    width: 100%;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        180deg,
+        rgba(20, 24, 28, 0.7) 0%,
+        rgba(10, 12, 14, 0.9) 100%
+    );
+
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.continue-button {
+    width: 150px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-muted);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.continue-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+}
+
+.back-button {
+    width: 150px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--btn-add-color);
+    border: 1px solid var(--btn-add-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+}
+
+.input-error {
+    border-color: red !important;
+}
+
 /* Stage 1 styles */
 
 .stage1-form {
@@ -118,6 +183,11 @@
 
 /* Stage 2 styles */
 
+.stage2-form-container {
+    max-width: 600px;
+    width: 100%;
+}
+
 .stage2-container {
     width: 100%;
     display: flex;
@@ -133,63 +203,51 @@
     align-items: center;
 }
 
-.stage2-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 80px;
+.stage-text-container {
     width: 100%;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.stage-text-tooltip {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.75rem;
+    background-color: var(--gold-muted);
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stage2-input-label {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+    font-family: inherit;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--input-bg);
+    border: 1px solid #333;
+    color: #fff;
+    font-size: 0.9rem;
     box-sizing: border-box;
-
-    background: linear-gradient(
-        180deg,
-        rgba(20, 24, 28, 0.7) 0%,
-        rgba(10, 12, 14, 0.9) 100%
-    );
-
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
-    z-index: 10;
+    transition: border-color 0.3s;
+    letter-spacing: 0.5px;
 }
 
-.continue-button {
-    width: 150px;
-    padding: 12px;
-    margin-top: 10px;
-    background-color: var(--btn-bg);
-    color: var(--gold-primary);
-    border: 1px solid var(--gold-muted);
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+.stage2-input-label input {
+    padding: 0;
+    border: none;
 }
 
-.continue-button:hover {
-    background-color: var(--gold-primary);
-    color: var(--dark-bg);
-    border-color: var(--gold-primary);
-}
-
-.back-button {
-    width: 150px;
-    padding: 12px;
-    margin-top: 10px;
-    background-color: var(--btn-bg);
-    color: var(--btn-add-color);
-    border: 1px solid var(--btn-add-color);
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: var(--gold-primary);
-    color: var(--dark-bg);
-    border-color: var(--gold-primary);
+.stage2-input-label:focus {
+    border-bottom-color: var(--gold-primary);
+    outline: none;
 }

@@ -36,7 +36,7 @@ function Register() {
                     <p>Create your account</p>
                 </div>
                 <form onSubmit={submitRegister} className="login-form">
-                    <label htmlFor="register-email">
+                    <label htmlFor="register-email form-label">
                         Email address
                         <input
                             placeholder="Enter your email"
@@ -47,7 +47,7 @@ function Register() {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </label>
-                    <label htmlFor="register-pass">
+                    <label htmlFor="register-pass form-label">
                         Password
                         <input
                             placeholder="Enter your password"
