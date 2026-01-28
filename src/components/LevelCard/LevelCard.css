@@ -8,6 +8,22 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    background-color: rgba(74, 59, 26, 1);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.6);
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    padding: 10px;
+    z-index: 10;
+    cursor: not-allowed;
 }
 
 .level-active {
@@ -30,6 +46,7 @@
     height: 40px;
     top: 0;
     left: 0;
+    z-index: 1000;
 }
 
 .absolute-lock-icon {
@@ -44,6 +61,7 @@
     height: 40px;
     top: 0;
     left: 0;
+    z-index: 1000;
 }
 
 .level-card-text {
@@ -72,4 +90,36 @@
 
 .card-text-active p {
     color: var(--gold-primary);
+}
+
+.level-card-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-button-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
+.card-button-container::before {
+    width: 80%;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    right: 0;
+    height: 10px;
+    background: #5d6a71;
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 2px;
+    border: 2px solid black;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
 }

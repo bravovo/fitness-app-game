@@ -3,7 +3,7 @@ import "./LevelCard.css";
 import timer from "/icons/header/timer.png";
 import lock from "/icons/lock.svg";
 
-function LevelCard({ level, title, imageUrl, isAvalilable }) {
+function LevelCard({ level, title, imageUrl, isAvalilable, children }) {
     return (
         <div
             className={`level-card-container ${
@@ -30,7 +30,10 @@ function LevelCard({ level, title, imageUrl, isAvalilable }) {
                 <p>Level {level}</p>
                 <h1>{title}</h1>
             </div>
-            <div></div>
+            <div className="level-card-buttons">
+                <div className="card-button-container">{children}</div>
+            </div>
+            {!isAvalilable && <div className="card-overlay"></div>}
         </div>
     );
 }

@@ -3,11 +3,58 @@ import "./Start.css";
 
 import LevelCard from "../../components/LevelCard/LevelCard";
 
-import { levels } from "../../data/constants";
+import level1Card from "/images/levels/level1-card.jpg";
+
+import button from "/images/levels/button.png";
+import taskBoard from "/images/levels/task-board.png";
+
 import { useEffect } from "react";
 
 import eagle from "/images/eagle.png";
 import { useState } from "react";
+
+const levels = [
+    {
+        level: 0,
+        title: "Campfire",
+        imageUrl: level1Card,
+        isAvalilable: true,
+        children: (
+            <>
+                <button className="level-button">
+                    <img src={button} alt="" className="level-button-img" />
+                </button>
+                <button className="level-button">
+                    <img src={taskBoard} alt="" className="level-button-img" />
+                </button>
+            </>
+        ),
+    },
+    {
+        level: 1,
+        title: "Nutrition",
+        imageUrl: level1Card,
+        isAvalilable: false,
+    },
+    {
+        level: 2,
+        title: "Exercise",
+        imageUrl: level1Card,
+        isAvalilable: false,
+    },
+    {
+        level: 3,
+        title: "Mindset",
+        imageUrl: level1Card,
+        isAvalilable: false,
+    },
+    {
+        level: 4,
+        title: "Game plan",
+        imageUrl: level1Card,
+        isAvalilable: false,
+    },
+].reverse();
 
 function Start() {
     const [stage, setStage] = useState(0);
@@ -75,6 +122,7 @@ function Start() {
                                     title={levelData.title}
                                     imageUrl={levelData.imageUrl}
                                     isAvalilable={levelData.isAvalilable}
+                                    children={levelData.children}
                                 />
                             );
                         })}

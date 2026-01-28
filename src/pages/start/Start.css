@@ -84,3 +84,16 @@
     align-items: center;
     gap: 10px;
 }
+
+.level-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.level-button-img {
+    width: 80px;
+    height: 80px;
+}

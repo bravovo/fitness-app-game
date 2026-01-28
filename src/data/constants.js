@@ -15,8 +15,6 @@ import improveHealth from "/icons/goals/improve-health.svg";
 import fatLossMuscleGain from "/icons/goals/fat-muscle.svg";
 import others from "/icons/goals/others.svg";
 
-import level1Card from "/images/levels/level1-card.jpg";
-
 export const avatars = [
     avatar1,
     avatar2,
@@ -71,36 +69,3 @@ export const mainGoals = [
         img: others,
     },
 ];
-
-export const levels = [
-    {
-        level: 0,
-        title: "Campfire",
-        imageUrl: level1Card,
-        isAvalilable: true,
-    },
-    {
-        level: 1,
-        title: "Nutrition",
-        imageUrl: "",
-        isAvalilable: false,
-    },
-    {
-        level: 2,
-        title: "Exercise",
-        imageUrl: "",
-        isAvalilable: false,
-    },
-    {
-        level: 3,
-        title: "Mindset",
-        imageUrl: "",
-        isAvalilable: false,
-    },
-    {
-        level: 4,
-        title: "Game plan",
-        imageUrl: "",
-        isAvalilable: false,
-    },
-].reverse();
