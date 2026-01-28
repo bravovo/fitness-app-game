@@ -4,6 +4,7 @@ import logo from "/images/logo.png";
 import silhouette from "/images/silhouette.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { user } from "../../data/constants";
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -14,6 +15,9 @@ function Register() {
         e.preventDefault();
 
         // Simulate successful registration
+        user.email = email;
+        user.password = password;
+
         alert(`Registration successful! Welcome, ${email}`);
 
         // Redirect to details page

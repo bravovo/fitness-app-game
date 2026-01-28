@@ -1,13 +1,19 @@
-import avatar1 from "../../public/icons/avatars/bear.png";
-import avatar2 from "../../public/icons/avatars/boy.png";
-import avatar3 from "../../public/icons/avatars/cat.png";
-import avatar4 from "../../public/icons/avatars/gamer.png";
-import avatar5 from "../../public/icons/avatars/girl.png";
-import avatar6 from "../../public/icons/avatars/gorilla.png";
-import avatar7 from "../../public/icons/avatars/lion.png";
-import avatar8 from "../../public/icons/avatars/man.png";
-import avatar9 from "../../public/icons/avatars/meerkat.png";
-import avatar10 from "../../public/icons/avatars/woman.png";
+import avatar1 from "/icons/avatars/bear.png";
+import avatar2 from "/icons/avatars/boy.png";
+import avatar3 from "/icons/avatars/cat.png";
+import avatar4 from "/icons/avatars/gamer.png";
+import avatar5 from "/icons/avatars/girl.png";
+import avatar6 from "/icons/avatars/gorilla.png";
+import avatar7 from "/icons/avatars/lion.png";
+import avatar8 from "/icons/avatars/man.png";
+import avatar9 from "/icons/avatars/meerkat.png";
+import avatar10 from "/icons/avatars/woman.png";
+
+import weightLoss from "/icons/goals/weight-loss.png";
+import muscleGain from "/icons/goals/muscle-gain.svg";
+import improveHealth from "/icons/goals/improve-health.svg";
+import fatLossMuscleGain from "/icons/goals/fat-muscle.svg";
+import others from "/icons/goals/others.svg";
 
 export const avatars = [
     avatar1,
@@ -20,4 +26,46 @@ export const avatars = [
     avatar8,
     avatar9,
     avatar10,
+];
+
+export const user = {
+    avatar: "",
+    username: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    mainGoal: "",
+    units: "",
+    height: "",
+    weight: "",
+    weightGoal: "",
+    gender: "",
+};
+
+export const mainGoals = [
+    {
+        id: 1,
+        label: "Lose Weight",
+        img: weightLoss,
+    },
+    {
+        id: 2,
+        label: "Gain Muscle",
+        img: muscleGain,
+    },
+    {
+        id: 3,
+        label: "Improve Health",
+        img: improveHealth,
+    },
+    {
+        id: 4,
+        label: "Fat lose + Muscle gain",
+        img: fatLossMuscleGain,
+    },
+    {
+        id: 5,
+        label: "Others",
+        img: others,
+    },
 ];

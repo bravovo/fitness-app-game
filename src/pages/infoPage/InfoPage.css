@@ -14,7 +14,7 @@
 }
 
 .top-logo {
-    max-width: 150px;
+    max-width: 100px;
     position: absolute;
     top: 0;
 }
@@ -193,7 +193,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .stage2-main-content-container {
@@ -250,4 +250,223 @@
 .stage2-input-label:focus {
     border-bottom-color: var(--gold-primary);
     outline: none;
+}
+
+/* Stage 3 styles */
+
+.stage3-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.stage3-button img {
+    width: 20px;
+}
+
+/* Stage 6 styles */
+
+.goal-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.goal-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(74, 82, 86, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 6px 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    color: var(--gold-muted);
+}
+
+.goal-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+.goal-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.goal-content img {
+    width: 50px;
+}
+
+.goal-card::before {
+    content: "";
+    width: 11px;
+    height: 10px;
+    background: var(--gold-primary);
+    border-radius: 50%;
+    position: absolute;
+    right: 23px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.2s ease;
+}
+
+.goal-card::after {
+    content: "";
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+}
+
+.goal-card:has(input:checked)::before {
+    transform: translateY(-50%) scale(1);
+}
+
+.goal-card:has(input:checked)::after {
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.goal-card:has(input:checked) {
+    background: rgba(27, 39, 44, 0.5);
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-muted);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Stage 7 */
+
+.stage7-form-container {
+    max-width: 400px;
+    width: 100%;
+}
+
+.stage7-form-label {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.stage7-input-container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.stage7-card {
+    width: 100%;
+    padding: 12px;
+}
+
+.stage7-card::before {
+    content: "";
+    width: 11px;
+    height: 10px;
+    background: var(--gold-primary);
+    border-radius: 50%;
+    position: absolute;
+    right: 17px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    transition: transform 0.2s ease;
+}
+
+.stage7-card-content img {
+    width: 20px;
+}
+
+/* Stage 8 styles */
+
+.stage8-input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.stage8-input-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.stage8-input {
+    gap: 30px;
+}
+
+.stage8-card {
+    width: 100%;
+    padding: 12px;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.stage8-card-content {
+    width: auto;
+}
+
+.stage8-card::after {
+    position: absolute;
+    left: 1px;
+}
+
+.stage8-card::before {
+    left: 6px;
+}
+
+.stage8-card:has(input:checked) {
+    background: none;
+    color: var(--gold-primary);
+    border: none;
+    box-shadow: none;
+}
+
+/* Stage 9 styles */
+
+.stage9-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.stage9-text-container {
+    text-align: center;
+    color: #fff !important;
+}
+
+.fitness-dungeon {
+    color: #fff !important;
+}
+
+.dungeon-img {
+    max-width: 500px !important;
+    box-shadow: 0 0 60px rgba(26, 88, 127, 0.8);
+    border: none !important;
+}
+
+.enter-world-button {
+    width: fit-content;
 }

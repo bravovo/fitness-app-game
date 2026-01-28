@@ -4,6 +4,7 @@ import "./forgotPassword.css";
 import logo from "/images/logo.png";
 import silhouette from "/images/silhouette.png";
 import { useState } from "react";
+import { user } from "../../data/constants";
 
 function ForgotPassword() {
     const navigate = useNavigate();
@@ -14,6 +15,9 @@ function ForgotPassword() {
 
     const submitStage1 = (e) => {
         e.preventDefault();
+
+        user.email = email;
+
         setEmail("");
         setPassword("");
         setConfirmPassword("");
@@ -31,6 +35,8 @@ function ForgotPassword() {
             alert("Password must be at least 6 characters long!");
             return;
         }
+
+        user.password = password;
 
         alert("Password has been reset successfully!");
         setEmail("");

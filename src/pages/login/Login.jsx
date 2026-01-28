@@ -4,6 +4,7 @@ import logo from "/images/logo.png";
 import silhouette from "/images/silhouette.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { user } from "../../data/constants";
 
 function Login() {
     const navigate = useNavigate();
@@ -14,6 +15,19 @@ function Login() {
         e.preventDefault();
 
         alert(`Logged in with email: ${email}`);
+
+        user.email = email;
+        if (!user.password) {
+            user.password = password;
+        } else {
+            if (user.password !== password) {
+                alert(
+                    "Invalid credentials. Please check your password and try again."
+                );
+                setPassword("");
+                return;
+            }
+        }
 
         setEmail("");
         setPassword("");

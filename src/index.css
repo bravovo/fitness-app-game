@@ -37,6 +37,9 @@ body {
     margin: 0;
     font-family: "Cinzel", serif;
     background-color: var(--dark-bg);
+    background-image: url(/images/background.png);
+    background-size: cover;
+    background-position: center;
 }
 
 h1 {
