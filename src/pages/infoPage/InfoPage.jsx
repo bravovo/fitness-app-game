@@ -152,7 +152,7 @@ function InfoPage() {
         e.preventDefault();
 
         console.log(user);
-        navigate("/start");
+        navigate("/levels");
     };
 
     const skipForNowClick = (e) => {

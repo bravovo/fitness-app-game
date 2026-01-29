@@ -1,9 +1,6 @@
-import Header from "../../components/Header/Header";
 import "./Start.css";
 
 import LevelCard from "../../components/LevelCard/LevelCard";
-
-import level1Card from "/images/levels/level1-card.jpg";
 
 import button from "/images/levels/button.png";
 import taskBoard from "/images/levels/task-board.png";
@@ -12,44 +9,12 @@ import { useEffect, useRef } from "react";
 
 import eagle from "/images/eagle.png";
 import { useState } from "react";
-
-const levels = [
-    {
-        level: 0,
-        title: "Campfire",
-        imageUrl: level1Card,
-        isAvalilable: true,
-        onLevelClick: () => {
-            console.log("Level 0 clicked");
-        },
-    },
-    {
-        level: 1,
-        title: "Nutrition",
-        imageUrl: level1Card,
-        isAvalilable: false,
-    },
-    {
-        level: 2,
-        title: "Exercise",
-        imageUrl: level1Card,
-        isAvalilable: false,
-    },
-    {
-        level: 3,
-        title: "Mindset",
-        imageUrl: level1Card,
-        isAvalilable: false,
-    },
-    {
-        level: 4,
-        title: "Game plan",
-        imageUrl: level1Card,
-        isAvalilable: false,
-    },
-].reverse();
+import { useNavigate } from "react-router-dom";
+import { levels, spokeWithMax } from "../../data/constants";
 
 function Start() {
+    const navigate = useNavigate();
+
     const overlayRef = useRef(null);
     const overlayTextRef = useRef(null);
     const [stage, setStage] = useState(0);
@@ -69,11 +34,15 @@ function Start() {
     const closeOverlay = () => {
         overlayRef.current?.classList.remove("active");
         document.body.style.overflow = "auto";
+        spokeWithMax.value = true;
     };
 
     useEffect(() => {
-        overlayRef.current?.classList.add("active");
-        document.body.style.overflow = "hidden";
+        document.body.style.backgroundImage = "url(/images/background.png)";
+        if (!spokeWithMax.value) {
+            overlayRef.current?.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
     }, []);
 
     return (
@@ -105,7 +74,6 @@ function Start() {
                     <img src={eagle} alt="Eagle" className="overlay-img" />
                 </div>
             </div>
-            <Header />
             <div className="page-container">
                 <div className="levels-container">
                     {levels &&
@@ -115,9 +83,11 @@ function Start() {
                                     key={levelData.level}
                                     level={levelData.level}
                                     title={levelData.title}
-                                    imageUrl={levelData.imageUrl}
+                                    imageUrl={levelData.cardImg}
                                     isAvalilable={levelData.isAvalilable}
-                                    onClick={levelData.onLevelClick}
+                                    onClick={() =>
+                                        navigate(`/levels/${levelData.level}`)
+                                    }
                                 >
                                     <button className="level-button">
                                         <img

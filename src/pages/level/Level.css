@@ -1,0 +1,61 @@
+.level-form {
+    max-width: 60%;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: linear-gradient(
+        325deg,
+        rgba(20, 24, 28, 0.8) 0%,
+        rgba(10, 12, 14, 0.97) 100%
+    );
+    border: 0.6px solid rgba(212, 175, 55, 0.3);
+    padding: 64px;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    animation: fadeInScale 1s ease-in-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        max-width: 90%;
+        transform: scale(0.6) translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        max-width: 60%;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.level-form:hover {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+    transform: scale(0.95);
+}
+
+.level-form h1 {
+    width: 100%;
+    margin: 0;
+    font-size: 5rem;
+    color: var(--gold-primary);
+}
+
+.level-form h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.level-form p {
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+}
+
+.level-form button {
+    max-width: 300px;
+}
