@@ -18,8 +18,6 @@ function Register() {
         user.email = email;
         user.password = password;
 
-        alert(`Registration successful! Welcome, ${email}`);
-
         // Redirect to details page
         navigate("/info");
     };

@@ -14,6 +14,7 @@ import pencil from "/icons/pencil.svg";
 import male from "/icons/male.svg";
 import female from "/icons/female.svg";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 function InfoPage() {
     const navigate = useNavigate();
@@ -744,8 +745,9 @@ function InfoPage() {
 
     return (
         <div className="info-container">
+            <Loader isLoading={loading} text={"Orru felt your intent..."} />
             <img src={logo} alt="Logo" className="top-logo" />
-            {loading ? <h2>Orru felt your intent...</h2> : renderStage()}
+            {!loading && renderStage()}
         </div>
     );
 }
