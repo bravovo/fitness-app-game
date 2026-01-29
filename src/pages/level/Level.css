@@ -111,6 +111,109 @@
     width: 250px;
 }
 
+.login-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-muted);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: serif;
+}
+
+.login-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 12px var(--gold-primary);
+}
+
+.stage-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    width: 100%;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        180deg,
+        rgba(20, 24, 28, 0.7) 0%,
+        rgba(10, 12, 14, 0.9) 100%
+    );
+
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+
+    animation: fadeInUp 0.5s ease;
+}
+
+.continue-button {
+    width: 150px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-muted);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.continue-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 15px var(--gold-primary);
+}
+
+.playground-button {
+    width: 250px;
+}
+
+.back-button {
+    width: 150px;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--btn-add-color);
+    border: 1px solid var(--btn-add-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 12px var(--gold-primary);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .play-buttons {
     width: 100%;
     display: flex;
@@ -233,6 +336,7 @@
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s ease-out;
+    cursor: pointer;
 }
 
 .resource:hover {

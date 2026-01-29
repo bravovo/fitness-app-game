@@ -3,7 +3,7 @@ import "./Level.css";
 import { useParams } from "react-router-dom";
 
 import { levels } from "../../data/constants";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 
 import button from "/images/levels/button.png";
 import taskBoard from "/images/levels/task-board.png";
@@ -19,9 +19,11 @@ import link from "/icons/link.svg";
 import dungeon from "/images/dungeon.png";
 import play from "/icons/play-icon.svg";
 import closeIcon from "/icons/close.svg";
+import Loader from "../../components/Loader/Loader";
 
 function Level() {
     const [dashboardOpen, setDashboardOpen] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const playgroundRef = useRef(null);
     const videoOverlayRef = useRef(null);
@@ -52,7 +54,10 @@ function Level() {
     };
 
     const handleDashboardClick = () => {
-        setDashboardOpen(false);
+        setIsLoading(true);
+        setTimeout(() => {
+            setDashboardOpen(false);
+        }, 300);
     };
 
     const markAsWatched = () => {
@@ -112,110 +117,116 @@ function Level() {
                     </button>
                 </div>
             )}
-            <div className="playground-closed" ref={playgroundRef}>
-                <div className="playground">
-                    <div className="play-buttons">
-                        <button className="button-back">
-                            <label htmlFor="" className="button-back-icon">
-                                <img src={arrow} alt="Back" />
-                            </label>
-                            Back
-                        </button>
-                        <div className="level-buttons-container">
-                            <div className="card-button-container level-buttons">
-                                <button className="level-button">
-                                    <img
-                                        src={button}
-                                        alt=""
-                                        className="level-button-img"
-                                    />
-                                </button>
-                                <button className="level-button">
-                                    <img
-                                        src={taskBoard}
-                                        alt=""
-                                        className="level-button-img"
-                                    />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="level-main-content">
-                        <div className="level-main-text-container">
-                            <div className="level-main-header-text">
-                                <h2 className="level-header-main">
-                                    Build better choices
-                                </h2>
-                                <p>
-                                    Get a quick introduction to the flow,
-                                    understand what level covers, and prepare
-                                    for a smooth, confident start
-                                </p>
-                            </div>
-                            <div className="level-main-header-text">
-                                <h2>Resources</h2>
-                                <div className="resources-container">
-                                    <div className="resource">
-                                        <div className="resource-text">
-                                            <img src={file} alt="File" />
-                                            Diet plan
-                                        </div>
-                                        <img src={download} alt="Download" />
-                                    </div>
-                                    <div className="resource">
-                                        <div className="resource-text">
-                                            <img src={file} alt="File" />
-                                            Workout plan
-                                        </div>
-                                        <button>
-                                            <img
-                                                src={download}
-                                                alt="Download"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="level-main-header-text level-links-container">
-                                <h2>Links</h2>
-                                <a href="#" className="level-link">
-                                    {" "}
-                                    <img src={link} alt="" />
-                                    <span>Facts on diet</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div className="level-video-container">
-                            <div
-                                className="video-container"
-                                onClick={openVideoOverlay}
-                            >
-                                <img src={dungeon} alt="" />
-                                <div className="level-video-overlay">
-                                    <button className="earth-btn">
+            {!dashboardOpen && (
+                <div className="playground-closed" ref={playgroundRef}>
+                    <div className="playground">
+                        <div className="play-buttons">
+                            <button className="button-back">
+                                <label htmlFor="" className="button-back-icon">
+                                    <img src={arrow} alt="Back" />
+                                </label>
+                                Back
+                            </button>
+                            <div className="level-buttons-container">
+                                <div className="card-button-container level-buttons">
+                                    <button className="level-button">
                                         <img
-                                            src={play}
-                                            alt="Play"
-                                            className="play-img"
+                                            src={button}
+                                            alt=""
+                                            className="level-button-img"
+                                        />
+                                    </button>
+                                    <button className="level-button">
+                                        <img
+                                            src={taskBoard}
+                                            alt=""
+                                            className="level-button-img"
                                         />
                                     </button>
                                 </div>
                             </div>
                         </div>
+                        <div className="level-main-content">
+                            <div className="level-main-text-container">
+                                <div className="level-main-header-text">
+                                    <h2 className="level-header-main">
+                                        Build better choices
+                                    </h2>
+                                    <p>
+                                        Get a quick introduction to the flow,
+                                        understand what level covers, and
+                                        prepare for a smooth, confident start
+                                    </p>
+                                </div>
+                                <div className="level-main-header-text">
+                                    <h2>Resources</h2>
+                                    <div className="resources-container">
+                                        <div className="resource">
+                                            <div className="resource-text">
+                                                <img src={file} alt="File" />
+                                                Diet plan
+                                            </div>
+                                            <img
+                                                src={download}
+                                                alt="Download"
+                                            />
+                                        </div>
+                                        <div className="resource">
+                                            <div className="resource-text">
+                                                <img src={file} alt="File" />
+                                                Workout plan
+                                            </div>
+                                            <button>
+                                                <img
+                                                    src={download}
+                                                    alt="Download"
+                                                />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="level-main-header-text level-links-container">
+                                    <h2>Links</h2>
+                                    <a href="#" className="level-link">
+                                        {" "}
+                                        <img src={link} alt="" />
+                                        <span>Facts on diet</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="level-video-container">
+                                <div
+                                    className="video-container"
+                                    onClick={openVideoOverlay}
+                                >
+                                    <img src={dungeon} alt="" />
+                                    <div className="level-video-overlay">
+                                        <button className="earth-btn">
+                                            <img
+                                                src={play}
+                                                alt="Play"
+                                                className="play-img"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <footer className="stage-controls level-controls">
+                        <button className="back-button" onClick={() => {}}>
+                            Button
+                        </button>
+                        <button
+                            className="continue-button playground-button"
+                            onClick={markAsWatched}
+                        >
+                            Mark as watched
+                        </button>
+                    </footer>
                 </div>
-                <footer className="stage-controls level-controls">
-                    <button className="back-button" onClick={() => {}}>
-                        Button
-                    </button>
-                    <button
-                        className="continue-button playground-button"
-                        onClick={markAsWatched}
-                    >
-                        Mark as watched
-                    </button>
-                </footer>
-            </div>
+            )}
+            {isLoading && dashboardOpen && <Loader isLoading={isLoading} />}
         </div>
     );
 }
