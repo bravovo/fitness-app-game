@@ -2,23 +2,14 @@ import "./Login.css";
 
 import logo from "/images/logo.png";
 import silhouette from "/images/silhouette.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { user } from "../../data/constants";
 
-import Loader from "../../components/Loader/Loader";
-
 function Login() {
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 1000);
-    }, []);
 
     const submitLogin = (e) => {
         e.preventDefault();
@@ -50,7 +41,6 @@ function Login() {
                 backgroundPosition: "center",
             }}
         >
-            <Loader isLoading={isLoading} text={"hello world"} />
             <div className="form-container">
                 <img src={logo} alt="Logo" />
                 <div className="form-text-container">
