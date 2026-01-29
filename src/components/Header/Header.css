@@ -44,6 +44,14 @@
     font-family: serif;
 }
 
+.earth-btn:hover {
+    border-color: var(--gold-muted);
+}
+
+.earth-btn:focus {
+    outline: none;
+}
+
 .earth-img {
     width: 40px;
 }

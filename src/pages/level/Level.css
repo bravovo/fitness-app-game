@@ -205,7 +205,7 @@
 }
 
 .level-video-container {
-    width: 50%;
+    width: 60%;
     border: 1px solid var(--gold-muted);
     background-color: var(--btn-bg);
     padding: 24px;
@@ -310,22 +310,56 @@
 }
 
 .level-video-overlay img {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
 }
 
-.level-video-overlay button {
-    width: 200px;
-    height: 125px;
-    border: none;
-    border-radius: 16px;
-    transition: all 0.3s ease-in;
+.video-page-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.level-video-overlay button:hover {
-    background-color: rgb(63, 63, 63);
+.video-page-text-container {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: white;
+    z-index: 1000;
 }
 
-.level-video-overlay button:focus {
-    outline: none;
+.video-page-text-container h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--gold-primary);
+}
+
+.video-page-text-container p {
+    margin: 0;
+}
+
+.video-overlay-img {
+    width: 900px;
+    height: 500px;
+}
+
+.video-overlay-container {
+    width: 900px;
+}
+
+.close-btn {
+    z-index: 10001;
+    position: absolute;
+    top: 30px;
+    right: 80px;
+}
+
+.close-img {
+    width: 40px;
+    height: 40px;
 }

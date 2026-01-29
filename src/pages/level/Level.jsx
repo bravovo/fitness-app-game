@@ -18,10 +18,15 @@ import link from "/icons/link.svg";
 
 import dungeon from "/images/dungeon.png";
 import play from "/icons/play-icon.svg";
+import closeIcon from "/icons/close.svg";
 
 function Level() {
     const [dashboardOpen, setDashboardOpen] = useState(true);
+
     const playgroundRef = useRef(null);
+    const videoOverlayRef = useRef(null);
+    const videoContainerRef = useRef(null);
+
     const { id } = useParams();
     const level = levels[levels.findIndex((l) => l.level === parseInt(id))];
 
@@ -41,6 +46,11 @@ function Level() {
         }
     }, [dashboardOpen]);
 
+    const openVideoOverlay = () => {
+        videoOverlayRef.current?.classList.add("active");
+        document.body.style.overflow = "hidden";
+    };
+
     const handleDashboardClick = () => {
         setDashboardOpen(false);
     };
@@ -49,8 +59,40 @@ function Level() {
         console.log("WATCHED!");
     };
 
+    const handleCloseClick = () => {
+        videoOverlayRef.current?.classList.remove("active");
+        document.body.style.overflow = "auto";
+    };
+
     return (
         <div className="level-page-container">
+            <div
+                className="video-page-overlay"
+                id="overlay"
+                ref={videoOverlayRef}
+            >
+                <button
+                    className="earth-btn close-btn"
+                    onClick={handleCloseClick}
+                >
+                    <img src={closeIcon} alt="Close" className="close-img" />
+                </button>
+                <div className="video-page-text-container">
+                    <p>Fitness Dungeon</p>
+                    <h2>Start your journey</h2>
+                </div>
+                <div
+                    className="video-container video-overlay-container"
+                    ref={videoContainerRef}
+                >
+                    <img src={dungeon} alt="" className="video-overlay-img" />
+                    <div className="level-video-overlay">
+                        <button className="earth-btn">
+                            <img src={play} alt="Play" className="play-img" />
+                        </button>
+                    </div>
+                </div>
+            </div>
             {dashboardOpen && (
                 <div className="level-form">
                     <h1>
@@ -144,11 +186,18 @@ function Level() {
                             </div>
                         </div>
                         <div className="level-video-container">
-                            <div className="video-container">
+                            <div
+                                className="video-container"
+                                onClick={openVideoOverlay}
+                            >
                                 <img src={dungeon} alt="" />
                                 <div className="level-video-overlay">
-                                    <button>
-                                        <img src={play} alt="" />
+                                    <button className="earth-btn">
+                                        <img
+                                            src={play}
+                                            alt="Play"
+                                            className="play-img"
+                                        />
                                     </button>
                                 </div>
                             </div>
