@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
 .info-container h2 {
@@ -36,6 +37,19 @@
     border-top: 1px solid rgba(212, 175, 55, 0.3);
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
     z-index: 10;
+
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .continue-button {
@@ -57,6 +71,7 @@
     background-color: var(--gold-primary);
     color: var(--dark-bg);
     border-color: var(--gold-primary);
+    box-shadow: 0 0 15px var(--gold-primary);
 }
 
 .back-button {
@@ -78,6 +93,7 @@
     background-color: var(--gold-primary);
     color: var(--dark-bg);
     border-color: var(--gold-primary);
+    box-shadow: 0 0 12px var(--gold-primary);
 }
 
 .input-error {
@@ -109,7 +125,7 @@
     width: 100px;
     height: 100px;
     border-color: var(--gold);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
 
 .avatar-circle.small {
@@ -121,6 +137,11 @@
     align-items: center;
     justify-self: center;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.avatar-circle.small:hover {
+    transform: scale(1.05);
 }
 
 .selected {
@@ -167,6 +188,7 @@
     letter-spacing: 1px;
     transition: all 0.3s ease;
     font-family: serif;
+    box-shadow: 0 0 8px var(--gold-primary);
 }
 
 .avatars-container {
@@ -181,11 +203,67 @@
     max-width: 50px !important;
 }
 
+.info-page-image {
+    max-width: 400px;
+    height: auto;
+    animation-play-state: running;
+    animation: imageFadeIn 1s ease-in-out, jump 3s ease-in-out infinite;
+}
+
+.info-page-image.hidden {
+    opacity: 0;
+    max-width: 0;
+    transform: scale(0.3) translateX(100px);
+}
+
+.info-page-image:hover {
+    animation-play-state: paused;
+}
+
+@keyframes imageFadeIn {
+    from {
+        opacity: 0;
+        max-width: 0;
+        transform: scale(0.3) translateX(100px);
+    }
+    to {
+        opacity: 1;
+        max-width: 400px;
+        transform: scale(1) translateX(0);
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 /* Stage 2 styles */
 
 .stage2-form-container {
-    max-width: 600px;
     width: 100%;
+    animation: formFadeIn 0.5s ease-in-out;
+}
+
+@keyframes formFadeIn {
+    from {
+        opacity: 0;
+        max-width: 800px;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        max-width: 500px;
+        width: 100%;
+        transform: translateX(0);
+    }
 }
 
 .stage2-container {
@@ -270,11 +348,42 @@
 
 /* Stage 6 styles */
 
+.stage6-form-container {
+    width: 100%;
+    animation: stage6FadeIn 0.5s ease-in-out;
+}
+
+@keyframes stage6FadeIn {
+    from {
+        opacity: 0;
+        height: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        height: 450px;
+        transform: translateY(0);
+    }
+}
+
 .goal-group {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    animation: goalGroupFadeIn 0.8s ease;
+}
+
+@keyframes goalGroupFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scaleY(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
 }
 
 .goal-card {
@@ -306,19 +415,6 @@
     width: 50px;
 }
 
-.goal-card::before {
-    content: "";
-    width: 11px;
-    height: 10px;
-    background: var(--gold-primary);
-    border-radius: 50%;
-    position: absolute;
-    right: 23px;
-    top: 50%;
-    transform: translateY(-50%) scale(0);
-    transition: transform 0.2s ease;
-}
-
 .goal-card::after {
     content: "";
     width: 18px;
@@ -327,12 +423,9 @@
     border-radius: 50%;
 }
 
-.goal-card:has(input:checked)::before {
-    transform: translateY(-50%) scale(1);
-}
-
 .goal-card:has(input:checked)::after {
-    border-color: rgba(212, 175, 55, 0.3);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .goal-card:has(input:checked) {
@@ -442,6 +535,12 @@
 }
 
 /* Stage 9 styles */
+
+.stage9-form-container {
+    max-width: 600px !important;
+    width: 100%;
+    animation: formFadeIn 0.5s ease-in-out;
+}
 
 .stage9-container {
     height: 100%;

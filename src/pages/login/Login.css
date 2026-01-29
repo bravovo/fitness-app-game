@@ -27,6 +27,21 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    animation: formFadeIn 0.5s ease-in-out;
+}
+
+@keyframes formFadeIn {
+    from {
+        opacity: 0;
+        max-width: 800px;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        max-width: 500px;
+        width: 100%;
+        transform: translateX(0);
+    }
 }
 
 .form-container img {
@@ -109,6 +124,7 @@ input::placeholder {
     background-color: var(--gold-primary);
     color: var(--dark-bg);
     border-color: var(--gold-primary);
+    box-shadow: 0 0 12px var(--gold-primary);
 }
 
 .login-button:focus {
@@ -144,4 +160,30 @@ input::placeholder {
 .login-page-image {
     max-width: 400px;
     height: auto;
+    animation: imageFadeIn 1s ease-in-out, jump 3s ease-in-out infinite;
+}
+
+@keyframes imageFadeIn {
+    from {
+        opacity: 0;
+        max-width: 0;
+        transform: scale(0.3) translateX(100px);
+    }
+    to {
+        opacity: 1;
+        max-width: 400px;
+        transform: scale(1) translateX(0);
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }

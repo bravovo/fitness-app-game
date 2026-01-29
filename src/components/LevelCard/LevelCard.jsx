@@ -3,7 +3,14 @@ import "./LevelCard.css";
 import timer from "/icons/header/timer.png";
 import lock from "/icons/lock.svg";
 
-function LevelCard({ level, title, imageUrl, isAvalilable, children }) {
+function LevelCard({
+    level,
+    title,
+    imageUrl,
+    isAvalilable,
+    children,
+    onClick,
+}) {
     return (
         <div
             className={`level-card-container ${
@@ -14,6 +21,7 @@ function LevelCard({ level, title, imageUrl, isAvalilable, children }) {
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
+            onClick={onClick}
         >
             <img
                 src={isAvalilable ? timer : lock}

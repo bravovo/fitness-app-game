@@ -23,7 +23,7 @@ function InfoPage() {
     const stage5InputRef = useRef(null);
 
     const [goalSelected, setGoalSelected] = useState(0);
-    const [genderSelected, setGenderSelected] = useState("");
+    const [genderSelected, setGenderSelected] = useState("male");
 
     const [unit, setUnit] = useState("metric");
     const [height, setHeight] = useState(75);
@@ -31,10 +31,10 @@ function InfoPage() {
     const [goalWeight, setGoalWeight] = useState(75);
 
     const [selectedId, setSelectedId] = useState(0);
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState(user.email || "");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [username, setUsername] = useState("username");
+    const [email, setEmail] = useState(user.email || "email@gmail.com");
+    const [firstName, setFirstName] = useState("user");
+    const [lastName, setLastName] = useState("lastName");
 
     const [stage, setStage] = useState(1);
     const [loading, setLoading] = useState(true);
@@ -257,7 +257,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="login-page-image"
+                                    className="info-page-image"
                                 />
                             </div>
                         </div>
@@ -315,7 +315,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="login-page-image"
+                                    className="info-page-image"
                                 />
                             </div>
                         </div>
@@ -378,7 +378,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="login-page-image"
+                                    className="info-page-image"
                                 />
                             </div>
                         </div>
@@ -441,7 +441,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="login-page-image"
+                                    className="info-page-image"
                                 />
                             </div>
                         </div>
@@ -465,7 +465,7 @@ function InfoPage() {
                 return (
                     <div className="stage2-container">
                         <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
+                            <div className="form-container stage6-form-container">
                                 <div className="form-text-container stage-text-container">
                                     <h2>What's your main goal?</h2>
                                 </div>
@@ -511,7 +511,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="login-page-image"
+                                    className="info-page-image"
                                 />
                             </div>
                         </div>
@@ -589,7 +589,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="login-page-image"
+                                    className="info-page-image"
                                 />
                             </div>
                         </div>
@@ -690,7 +690,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="login-page-image"
+                                    className={`info-page-image`}
                                 />
                             </div>
                         </div>
@@ -713,7 +713,7 @@ function InfoPage() {
             case 9:
                 return (
                     <div className="stage2-container stage9-container">
-                        <div className="form-container stage2-form-container">
+                        <div className="form-container stage9-form-container">
                             <div className="form-text-container stage9-text-container">
                                 <h2 className="acc-set-h2">
                                     Your account is all set!
