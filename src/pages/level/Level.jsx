@@ -68,7 +68,7 @@ function Level() {
         <div className="level-page-container">
             <div
                 className="video-page-overlay"
-                id="overlay"
+                id="level-overlay"
                 ref={videoOverlayRef}
             >
                 <button

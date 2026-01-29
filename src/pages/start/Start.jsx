@@ -47,7 +47,7 @@ function Start() {
 
     return (
         <>
-            <div id="overlay" ref={overlayRef} onClick={overlayClickHandler}>
+            <div id="start-overlay" ref={overlayRef} onClick={overlayClickHandler}>
                 <div className="overlay-container">
                     <div className="overlay-text" ref={overlayTextRef}>
                         <h2>Hi there! Im Max!</h2>
