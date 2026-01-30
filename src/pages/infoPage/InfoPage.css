@@ -204,10 +204,15 @@
 }
 
 .info-page-image {
-    max-width: 400px;
+    max-width: 350px;
     height: auto;
     animation-play-state: running;
     animation: imageFadeIn 1s ease-in-out, jump 3s ease-in-out infinite;
+    position: absolute;
+    right: 5%;
+    bottom: 15%;
+    z-index: 5;
+    pointer-events: none;
 }
 
 .info-page-image.hidden {

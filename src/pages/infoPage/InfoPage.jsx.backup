@@ -362,6 +362,13 @@ function InfoPage() {
                                     </button>
                                 </label>
                             </div>
+                            <div>
+                                <img
+                                    src={silhouette}
+                                    alt="Silhouette"
+                                    className={getImageClassName()}
+                                />
+                            </div>
                         </div>
                         <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
@@ -420,6 +427,13 @@ function InfoPage() {
                                     </button>
                                 </label>
                             </div>
+                            <div>
+                                <img
+                                    src={silhouette}
+                                    alt="Silhouette"
+                                    className={getImageClassName()}
+                                />
+                            </div>
                         </div>
                         <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
@@ -477,6 +491,13 @@ function InfoPage() {
                                         <img src={pencil} alt="Edit" />
                                     </button>
                                 </label>
+                            </div>
+                            <div>
+                                <img
+                                    src={silhouette}
+                                    alt="Silhouette"
+                                    className={getImageClassName()}
+                                />
                             </div>
                         </div>
                         <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
@@ -542,6 +563,13 @@ function InfoPage() {
                                             );
                                         })}
                                 </div>
+                            </div>
+                            <div>
+                                <img
+                                    src={silhouette}
+                                    alt="Silhouette"
+                                    className={getImageClassName()}
+                                />
                             </div>
                         </div>
                         <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
@@ -615,6 +643,13 @@ function InfoPage() {
                                         />
                                     </label>
                                 </div>
+                            </div>
+                            <div>
+                                <img
+                                    src={silhouette}
+                                    alt="Silhouette"
+                                    className={getImageClassName()}
+                                />
                             </div>
                         </div>
                         <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
@@ -711,6 +746,13 @@ function InfoPage() {
                                         }):`}
                                     />
                                 </div>
+                            </div>
+                            <div>
+                                <img
+                                    src={silhouette}
+                                    alt="Silhouette"
+                                    className={getImageClassName()}
+                                />
                             </div>
                         </div>
                         <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
