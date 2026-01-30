@@ -42,8 +42,34 @@ function InfoPage() {
     const [lastName, setLastName] = useState("lastName");
 
     const [stage, setStage] = useState(1);
+    const [prevStage, setPrevStage] = useState(1);
     const [loading, setLoading] = useState(true);
     const [isTransitioning, setIsTransitioning] = useState(false);
+
+    // Helper function to check if a stage has the info-page-image
+    const stageHasImage = (stageNum) => {
+        // Stages 2-8 have the silhouette image
+        return stageNum >= 2 && stageNum <= 8;
+    };
+
+    // Get the appropriate class for the image based on transition state
+    const getImageClassName = () => {
+        const prevHasImage = stageHasImage(prevStage);
+        const currentHasImage = stageHasImage(stage);
+        
+        // Only animate if transitioning between stages with different image states
+        if (isTransitioning && prevHasImage !== currentHasImage) {
+            // If prev had image but current doesn't, or current has image but prev didn't
+            if (prevHasImage && !currentHasImage) {
+                return 'info-page-image image-exit';
+            } else if (!prevHasImage && currentHasImage) {
+                return 'info-page-image image-enter';
+            }
+        }
+        
+        // No animation needed when both stages have the image or no transition
+        return 'info-page-image';
+    };
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -66,6 +92,7 @@ function InfoPage() {
         if (isTransitioning) return; // Prevent multiple transitions
         
         setIsTransitioning(true);
+        setPrevStage(stage);
         
         // Wait for exit animation to complete before changing stage
         transitionTimerRef.current = setTimeout(() => {
@@ -286,7 +313,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
+                                    className={getImageClassName()}
                                 />
                             </div>
                         </div>
@@ -295,14 +322,12 @@ function InfoPage() {
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
                                 disabled={isTransitioning}
-                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage2}
-                                disabled={isTransitioning}
                                 disabled={isTransitioning}
                             >
                                 Continue
@@ -348,7 +373,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
+                                    className={getImageClassName()}
                                 />
                             </div>
                         </div>
@@ -357,14 +382,12 @@ function InfoPage() {
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
                                 disabled={isTransitioning}
-                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage3}
-                                disabled={isTransitioning}
                                 disabled={isTransitioning}
                             >
                                 Continue
@@ -415,7 +438,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
+                                    className={getImageClassName()}
                                 />
                             </div>
                         </div>
@@ -480,7 +503,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
+                                    className={getImageClassName()}
                                 />
                             </div>
                         </div>
@@ -552,7 +575,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
+                                    className={getImageClassName()}
                                 />
                             </div>
                         </div>
@@ -632,7 +655,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
+                                    className={getImageClassName()}
                                 />
                             </div>
                         </div>
@@ -735,7 +758,7 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
+                                    className={getImageClassName()}
                                 />
                             </div>
                         </div>
