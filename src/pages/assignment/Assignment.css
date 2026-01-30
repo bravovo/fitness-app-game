@@ -1,5 +1,6 @@
 .assignment-page-container {
     padding: 0 120px 36px 120px;
+    justify-content: space-between;
     gap: 36px;
 }
 
@@ -170,7 +171,7 @@
 
 .assignment-btn-active {
     background-color: #1e3a5f;
-    color: #e0e0e0;
+    color: #d4af37;
     border: 2px solid #635437;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -194,4 +195,134 @@
     border-color: #635437;
     transform: none;
     box-shadow: none;
+}
+
+.completed-assign-form {
+    padding: 12px 0 24px 0;
+}
+
+.completed-assignment-title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.completed-assignment-title h2 {
+    text-align: left;
+    margin: 0;
+    font-size: 1.25rem;
+    color: #1e3a5f;
+}
+
+.completed-assign-button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+}
+
+.completed-assign-button img {
+    width: 24px;
+}
+
+.user-assign-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 24px;
+}
+
+.user-assign {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #cab286;
+    border: 2px solid #635437;
+    border-radius: 16px;
+    padding: 12px;
+}
+
+.user-assign-data {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-assign-data img {
+    width: 40px;
+}
+
+.user-assign-data-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.user-assign-data-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #1e3a5f;
+    font-weight: 900;
+}
+
+.user-assign-data-text span {
+    color: black;
+}
+
+.assign-answers {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.assign-answer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.assign-answer h3 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #1e3a5f;
+}
+
+.assign-answer p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: black;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+.assign-separator {
+    width: 100%;
+    height: 0.6px;
+    border-color: #96825c;
+    margin: 8px 0;
+}
+
+.other-assign {
+    background-color: transparent;
+    border: none;
 }
