@@ -572,6 +572,22 @@
 
 /* Transition animations */
 
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .stage-exit,
+    .stage-enter,
+    .form-exit,
+    .form-enter,
+    .image-exit,
+    .image-enter,
+    .controls-exit,
+    .controls-enter {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 /* Exit animations */
 .stage-exit {
     animation: stageExitAnimation 0.4s ease-out forwards;

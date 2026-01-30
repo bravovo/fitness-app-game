@@ -16,12 +16,16 @@ import female from "/icons/female.svg";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 
+// Transition timing constant (must match CSS animation duration)
+const TRANSITION_DURATION = 400;
+
 function InfoPage() {
     const navigate = useNavigate();
 
     const stage3InputRef = useRef(null);
     const stage4InputRef = useRef(null);
     const stage5InputRef = useRef(null);
+    const transitionTimerRef = useRef(null);
 
     const [goalSelected, setGoalSelected] = useState(0);
     const [genderSelected, setGenderSelected] = useState("male");
@@ -49,14 +53,26 @@ function InfoPage() {
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(() => {
+        // Cleanup transition timer on unmount
+        return () => {
+            if (transitionTimerRef.current) {
+                clearTimeout(transitionTimerRef.current);
+            }
+        };
+    }, []);
+
     const transitionToStage = (newStage) => {
+        if (isTransitioning) return; // Prevent multiple transitions
+        
         setIsTransitioning(true);
         
         // Wait for exit animation to complete before changing stage
-        setTimeout(() => {
+        transitionTimerRef.current = setTimeout(() => {
             setStage(newStage);
             setIsTransitioning(false);
-        }, 400); // Match CSS animation duration
+            transitionTimerRef.current = null;
+        }, TRANSITION_DURATION);
     };
 
     const submitStage1 = (e) => {
@@ -217,12 +233,13 @@ function InfoPage() {
                                     })}
                             </div>
                             <div className="stage1-controls">
-                                <button type="submit" className="login-button">
+                                <button type="submit" className="login-button" disabled={isTransitioning}>
                                     Continue
                                 </button>
                                 <button
                                     className="skip-button"
                                     onClick={skipForNowClick}
+                                    disabled={isTransitioning}
                                 >
                                     Skip for now
                                 </button>
@@ -277,12 +294,16 @@ function InfoPage() {
                             <button
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
+                                disabled={isTransitioning}
+                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage2}
+                                disabled={isTransitioning}
+                                disabled={isTransitioning}
                             >
                                 Continue
                             </button>
@@ -335,12 +356,16 @@ function InfoPage() {
                             <button
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
+                                disabled={isTransitioning}
+                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage3}
+                                disabled={isTransitioning}
+                                disabled={isTransitioning}
                             >
                                 Continue
                             </button>
@@ -398,12 +423,14 @@ function InfoPage() {
                             <button
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
+                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage4}
+                                disabled={isTransitioning}
                             >
                                 Continue
                             </button>
@@ -461,12 +488,14 @@ function InfoPage() {
                             <button
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
+                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage5}
+                                disabled={isTransitioning}
                             >
                                 Continue
                             </button>
@@ -531,12 +560,14 @@ function InfoPage() {
                             <button
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
+                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage6}
+                                disabled={isTransitioning}
                             >
                                 Continue
                             </button>
@@ -609,12 +640,14 @@ function InfoPage() {
                             <button
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
+                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage7}
+                                disabled={isTransitioning}
                             >
                                 Continue
                             </button>
@@ -710,12 +743,14 @@ function InfoPage() {
                             <button
                                 className="back-button"
                                 onClick={() => transitionToStage(stage - 1)}
+                                disabled={isTransitioning}
                             >
                                 Back
                             </button>
                             <button
                                 className="continue-button"
                                 onClick={submitStage8}
+                                disabled={isTransitioning}
                             >
                                 Continue
                             </button>
