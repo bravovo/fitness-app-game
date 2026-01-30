@@ -85,9 +85,12 @@ function Start() {
                                     title={levelData.title}
                                     imageUrl={levelData.cardImg}
                                     isAvalilable={levelData.isAvalilable}
-                                    onClick={() =>
-                                        navigate(`/levels/${levelData.level}`)
-                                    }
+                                    onClick={() => {
+                                        if (levelData.isAvalilable)
+                                            navigate(
+                                                `/levels/${levelData.level}`
+                                            );
+                                    }}
                                 >
                                     <button className="level-button">
                                         <img
