@@ -1,0 +1,102 @@
+.reward-form {
+    max-width: 60%;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: linear-gradient(
+        325deg,
+        rgba(20, 24, 28, 0.8) 0%,
+        rgba(10, 12, 14, 0.97) 100%
+    );
+    border: 0.6px solid rgba(212, 175, 55, 0.3);
+    padding: 32px;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    animation: fadeInScale 1s ease-in-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.6) translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.reward-form:hover {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+    transform: scale(0.95);
+}
+
+.reward-form h1 {
+    width: 100%;
+    margin: 0;
+    font-size: 2.5rem;
+    color: var(--gold-primary);
+}
+
+.reward-form h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.reward-form p {
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+}
+
+.reward-form button {
+    max-width: 300px;
+}
+
+.reward-card-container {
+    width: 70%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    background: rgba(74, 82, 86, 0.3);
+    border: 1px solid var(--gold-muted);
+    box-shadow: 0 0 25px var(--btn-add-color);
+    padding: 6px 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    color: var(--gold-muted);
+}
+
+.reward-card-container:hover {
+    box-shadow: 0 0 35px var(--gold-muted);
+    border-color: var(--gold-muted);
+    color: var(--gold-primary);
+}
+
+.reward-card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.reward-card-content h2 {
+    color: var(--gold-muted);
+}
+
+.reward-card-content img {
+    width: 50px;
+    height: 50px;
+}

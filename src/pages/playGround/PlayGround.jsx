@@ -41,7 +41,7 @@ function PlayGround() {
     };
 
     const markAsWatched = () => {
-        console.log("WATCHED!");
+        navigate(`/levels/${level.level}/reward`);
     };
 
     return (

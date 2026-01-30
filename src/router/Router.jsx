@@ -12,6 +12,8 @@ const LevelsLayout = lazy(() =>
 );
 const Level = lazy(() => import("../pages/level/Level"));
 const PlayGround = lazy(() => import("../pages/playGround/PlayGround"));
+const Reward = lazy(() => import("../pages/reward/Reward"));
+const Assignment = lazy(() => import("../pages/assignment/Assignment"));
 
 function Router() {
     return (
@@ -25,7 +27,10 @@ function Router() {
                     <Route index element={<Start />} />
                     <Route path=":id" element={<Level />} />
                     <Route path=":id/play" element={<PlayGround />} />
+                    <Route path=":id/reward" element={<Reward />} />
+                    <Route path=":id/assignment" element={<Assignment />} />
                 </Route>
+                <Route path="*" element={<h2>404 | Page not found</h2>} />
             </Routes>
         </RouteTransition>
     );
