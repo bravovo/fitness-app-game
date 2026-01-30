@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 import { useEffect, useRef, useState } from "react";
 import "./InfoPage.css";
 
@@ -22,6 +23,7 @@ function InfoPage() {
     const stage3InputRef = useRef(null);
     const stage4InputRef = useRef(null);
     const stage5InputRef = useRef(null);
+    const transitionTimerRef = useRef(null);
 
     const [goalSelected, setGoalSelected] = useState(0);
     const [genderSelected, setGenderSelected] = useState("male");
@@ -39,13 +41,22 @@ function InfoPage() {
 
     const [stage, setStage] = useState(1);
     const [loading, setLoading] = useState(true);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 1500);
 
         return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        return () => {
+            if (transitionTimerRef.current) {
+                clearTimeout(transitionTimerRef.current);
+            }
+        };
     }, []);
 
     const submitStage1 = (e) => {
@@ -146,7 +157,7 @@ function InfoPage() {
         user.weightGoal = goalWeight;
 
         console.log(user);
-        setStage(9);
+        transitionToStage(9);
     };
 
     const submitStage9 = (e) => {
@@ -160,6 +171,18 @@ function InfoPage() {
         e.preventDefault();
         user.avatar = "";
         setStage(2);
+    };
+
+    const transitionToStage = (newStage) => {
+        if (isTransitioning) return;
+
+        setIsTransitioning(true);
+
+        transitionTimerRef.current = setTimeout(() => {
+            setStage(newStage);
+            setIsTransitioning(false);
+            transitionTimerRef.current = null;
+        }, 600);
     };
 
     const renderStage = () => {
@@ -612,7 +635,11 @@ function InfoPage() {
                 );
             case 8:
                 return (
-                    <div className="stage2-container">
+                    <div
+                        className={`stage2-container ${
+                            isTransitioning ? "stage-exit" : ""
+                        }`}
+                    >
                         <div className="stage2-main-content-container">
                             <div className="form-container stage2-form-container">
                                 <div className="form-text-container stage-text-container">
@@ -691,7 +718,9 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image`}
+                                    className={`info-page-image ${
+                                        isTransitioning ? "image-exit" : ""
+                                    }`}
                                 />
                             </div>
                         </div>

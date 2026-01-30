@@ -220,6 +220,38 @@
     animation-play-state: paused;
 }
 
+.image-exit {
+    animation: imageExit 0.6s ease-out forwards;
+}
+
+@keyframes imageExit {
+    from {
+        opacity: 1;
+        max-width: 400px;
+        transform: scale(1) translateX(0);
+    }
+    to {
+        opacity: 0;
+        max-width: 0;
+        transform: scale(0.3) translateX(100px);
+    }
+}
+
+.stage-exit {
+    animation: stageExit 0.6s ease-out forwards;
+}
+
+@keyframes stageExit {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+}
+
 @keyframes imageFadeIn {
     from {
         opacity: 0;
