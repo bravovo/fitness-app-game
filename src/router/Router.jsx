@@ -11,6 +11,7 @@ const LevelsLayout = lazy(() =>
     import("../components/LevelsLayout/LevelsLayout")
 );
 const Level = lazy(() => import("../pages/level/Level"));
+const PlayGround = lazy(() => import("../pages/playGround/PlayGround"));
 
 function Router() {
     return (
@@ -23,6 +24,7 @@ function Router() {
                 <Route path="levels" element={<LevelsLayout />}>
                     <Route index element={<Start />} />
                     <Route path=":id" element={<Level />} />
+                    <Route path=":id/play" element={<PlayGround />} />
                 </Route>
             </Routes>
         </RouteTransition>
