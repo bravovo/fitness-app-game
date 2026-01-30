@@ -39,6 +39,7 @@ function InfoPage() {
 
     const [stage, setStage] = useState(1);
     const [loading, setLoading] = useState(true);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -48,10 +49,20 @@ function InfoPage() {
         return () => clearTimeout(timer);
     }, []);
 
+    const transitionToStage = (newStage) => {
+        setIsTransitioning(true);
+        
+        // Wait for exit animation to complete before changing stage
+        setTimeout(() => {
+            setStage(newStage);
+            setIsTransitioning(false);
+        }, 400); // Match CSS animation duration
+    };
+
     const submitStage1 = (e) => {
         e.preventDefault();
         user.avatar = avatars[selectedId];
-        setStage(2);
+        transitionToStage(2);
     };
 
     const submitStage2 = (e) => {
@@ -67,7 +78,7 @@ function InfoPage() {
         }
 
         user.username = username.trim();
-        setStage(3);
+        transitionToStage(3);
     };
 
     const submitStage3 = (e) => {
@@ -78,7 +89,7 @@ function InfoPage() {
         }
 
         user.email = email;
-        setStage(4);
+        transitionToStage(4);
     };
 
     const submitStage4 = (e) => {
@@ -89,7 +100,7 @@ function InfoPage() {
         }
 
         user.firstName = firstName;
-        setStage(5);
+        transitionToStage(5);
     };
 
     const submitStage5 = (e) => {
@@ -101,7 +112,7 @@ function InfoPage() {
 
         user.lastName = lastName;
         console.log(user);
-        setStage(6);
+        transitionToStage(6);
     };
 
     const submitStage6 = (e) => {
@@ -113,7 +124,7 @@ function InfoPage() {
 
         user.mainGoal = mainGoals.find((goal) => goal.id === goalSelected);
         console.log(user);
-        setStage(7);
+        transitionToStage(7);
     };
 
     const submitStage7 = (e) => {
@@ -125,7 +136,7 @@ function InfoPage() {
 
         user.gender = genderSelected;
         console.log(user);
-        setStage(8);
+        transitionToStage(8);
     };
 
     const submitStage8 = (e) => {
@@ -146,7 +157,7 @@ function InfoPage() {
         user.weightGoal = goalWeight;
 
         console.log(user);
-        setStage(9);
+        transitionToStage(9);
     };
 
     const submitStage9 = (e) => {
@@ -159,14 +170,14 @@ function InfoPage() {
     const skipForNowClick = (e) => {
         e.preventDefault();
         user.avatar = "";
-        setStage(2);
+        transitionToStage(2);
     };
 
     const renderStage = () => {
         switch (stage) {
             case 1:
                 return (
-                    <div className="form-container">
+                    <div className={`form-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
                         <div className="form-text-container">
                             <h2>Select your avatar</h2>
                         </div>
@@ -221,9 +232,9 @@ function InfoPage() {
                 );
             case 2:
                 return (
-                    <div className="stage2-container">
+                    <div className={`stage2-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
                         <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
+                            <div className={`form-container stage2-form-container ${isTransitioning ? 'form-exit' : 'form-enter'}`}>
                                 <div className="form-text-container stage-text-container">
                                     <h2>What's your user name?</h2>
                                     <Tooltip text="This is the name other users will see you as">
@@ -258,14 +269,14 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="info-page-image"
+                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
                                 />
                             </div>
                         </div>
-                        <div className="stage-controls">
+                        <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
                                 className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
+                                onClick={() => transitionToStage(stage - 1)}
                             >
                                 Back
                             </button>
@@ -280,9 +291,9 @@ function InfoPage() {
                 );
             case 3:
                 return (
-                    <div className="stage2-container">
+                    <div className={`stage2-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
                         <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
+                            <div className={`form-container stage2-form-container ${isTransitioning ? 'form-exit' : 'form-enter'}`}>
                                 <div className="form-text-container stage-text-container">
                                     <h2>What's your email address?</h2>
                                 </div>
@@ -316,14 +327,14 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="info-page-image"
+                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
                                 />
                             </div>
                         </div>
-                        <div className="stage-controls">
+                        <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
                                 className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
+                                onClick={() => transitionToStage(stage - 1)}
                             >
                                 Back
                             </button>
@@ -338,9 +349,9 @@ function InfoPage() {
                 );
             case 4:
                 return (
-                    <div className="stage2-container">
+                    <div className={`stage2-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
                         <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
+                            <div className={`form-container stage2-form-container ${isTransitioning ? 'form-exit' : 'form-enter'}`}>
                                 <div className="form-text-container stage-text-container">
                                     <h2>What's your first name?</h2>
                                     <Tooltip text="This is your real first name">
@@ -379,14 +390,14 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="info-page-image"
+                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
                                 />
                             </div>
                         </div>
-                        <div className="stage-controls">
+                        <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
                                 className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
+                                onClick={() => transitionToStage(stage - 1)}
                             >
                                 Back
                             </button>
@@ -401,9 +412,9 @@ function InfoPage() {
                 );
             case 5:
                 return (
-                    <div className="stage2-container">
+                    <div className={`stage2-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
                         <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
+                            <div className={`form-container stage2-form-container ${isTransitioning ? 'form-exit' : 'form-enter'}`}>
                                 <div className="form-text-container stage-text-container">
                                     <h2>What's your last name?</h2>
                                     <Tooltip text="This is your real last name">
@@ -442,14 +453,14 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="info-page-image"
+                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
                                 />
                             </div>
                         </div>
-                        <div className="stage-controls">
+                        <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
                                 className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
+                                onClick={() => transitionToStage(stage - 1)}
                             >
                                 Back
                             </button>
@@ -464,9 +475,9 @@ function InfoPage() {
                 );
             case 6:
                 return (
-                    <div className="stage2-container">
+                    <div className={`stage2-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
                         <div className="stage2-main-content-container">
-                            <div className="form-container stage6-form-container">
+                            <div className={`form-container stage6-form-container ${isTransitioning ? 'form-exit' : 'form-enter'}`}>
                                 <div className="form-text-container stage-text-container">
                                     <h2>What's your main goal?</h2>
                                 </div>
@@ -512,14 +523,14 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="info-page-image"
+                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
                                 />
                             </div>
                         </div>
-                        <div className="stage-controls">
+                        <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
                                 className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
+                                onClick={() => transitionToStage(stage - 1)}
                             >
                                 Back
                             </button>
@@ -534,9 +545,9 @@ function InfoPage() {
                 );
             case 7:
                 return (
-                    <div className="stage2-container">
+                    <div className={`stage2-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
                         <div className="stage2-main-content-container">
-                            <div className="form-container stage7-form-container">
+                            <div className={`form-container stage7-form-container ${isTransitioning ? 'form-exit' : 'form-enter'}`}>
                                 <label className="stage7-form-label">
                                     Characters gender{" "}
                                     <Tooltip text="Choose your gender">
@@ -590,14 +601,14 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className="info-page-image"
+                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
                                 />
                             </div>
                         </div>
-                        <div className="stage-controls">
+                        <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
                                 className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
+                                onClick={() => transitionToStage(stage - 1)}
                             >
                                 Back
                             </button>
@@ -612,9 +623,9 @@ function InfoPage() {
                 );
             case 8:
                 return (
-                    <div className="stage2-container">
+                    <div className={`stage2-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
                         <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
+                            <div className={`form-container stage2-form-container ${isTransitioning ? 'form-exit' : 'form-enter'}`}>
                                 <div className="form-text-container stage-text-container">
                                     <h2>Fill the details below</h2>
                                     <Tooltip text="You can always update and change these metrics ">
@@ -691,14 +702,14 @@ function InfoPage() {
                                 <img
                                     src={silhouette}
                                     alt="Silhouette"
-                                    className={`info-page-image`}
+                                    className={`info-page-image ${isTransitioning ? 'image-exit' : 'image-enter'}`}
                                 />
                             </div>
                         </div>
-                        <div className="stage-controls">
+                        <div className={`stage-controls ${isTransitioning ? 'controls-exit' : 'controls-enter'}`}>
                             <button
                                 className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
+                                onClick={() => transitionToStage(stage - 1)}
                             >
                                 Back
                             </button>
@@ -713,8 +724,8 @@ function InfoPage() {
                 );
             case 9:
                 return (
-                    <div className="stage2-container stage9-container">
-                        <div className="form-container stage9-form-container">
+                    <div className={`stage2-container stage9-container ${isTransitioning ? 'stage-exit' : 'stage-enter'}`}>
+                        <div className={`form-container stage9-form-container ${isTransitioning ? 'form-exit' : 'form-enter'}`}>
                             <div className="form-text-container stage9-text-container">
                                 <h2 className="acc-set-h2">
                                     Your account is all set!
