@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./forgotPassword.css";
+import "./ForgotPassword.css";
 
 import logo from "/images/logo.png";
 import silhouette from "/images/silhouette.png";
