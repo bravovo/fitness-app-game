@@ -4,13 +4,13 @@ import "./InfoPage.css";
 
 import Tooltip from "../../components/Tooltip/Tooltip";
 import RangeInput from "../../components/RangeInput/RangeInput";
+import OneFieldForm from "../../components/OneFieldForm/OneFieldForm";
 
 import logo from "/images/logo.png";
 import dungeon from "/images/dungeon.png";
 import { avatars, user, mainGoals } from "../../data/constants";
 
 import silhouette from "/images/silhouette.png";
-import pencil from "/icons/pencil.svg";
 
 import male from "/icons/male.svg";
 import female from "/icons/female.svg";
@@ -19,10 +19,6 @@ import Loader from "../../components/Loader/Loader";
 
 function InfoPage() {
     const navigate = useNavigate();
-
-    const stage3InputRef = useRef(null);
-    const stage4InputRef = useRef(null);
-    const stage5InputRef = useRef(null);
     const transitionTimerRef = useRef(null);
 
     const [goalSelected, setGoalSelected] = useState(0);
@@ -76,6 +72,8 @@ function InfoPage() {
             alert("Username cannot exceed 20 characters.");
             return;
         }
+
+        console.log(username);
 
         user.username = username.trim();
         setStage(3);
@@ -244,246 +242,54 @@ function InfoPage() {
                 );
             case 2:
                 return (
-                    <div className="stage2-container">
-                        <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
-                                <div className="form-text-container stage-text-container">
-                                    <h2>What's your user name?</h2>
-                                    <Tooltip text="This is the name other users will see you as">
-                                        <span className="stage-text-tooltip">
-                                            i
-                                        </span>
-                                    </Tooltip>
-                                </div>
-                                <label
-                                    className={`stage2-input-label ${
-                                        username.length > 20
-                                            ? "input-error"
-                                            : ""
-                                    }`}
-                                >
-                                    <input
-                                        type="text"
-                                        name="username"
-                                        value={username}
-                                        onChange={(e) =>
-                                            setUsername(e.target.value)
-                                        }
-                                        id=""
-                                        placeholder="Enter your username"
-                                        className="stage2-input"
-                                        required
-                                    />
-                                    <span>{username.length}/20</span>
-                                </label>
-                            </div>
-                            <div>
-                                <img
-                                    src={silhouette}
-                                    alt="Silhouette"
-                                    className="info-page-image"
-                                />
-                            </div>
-                        </div>
-                        <div className="stage-controls">
-                            <button
-                                className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
-                            >
-                                Back
-                            </button>
-                            <button
-                                className="continue-button"
-                                onClick={submitStage2}
-                            >
-                                Continue
-                            </button>
-                        </div>
-                    </div>
+                    <OneFieldForm
+                        title={"What's your user name?"}
+                        tooltip="This is the name other users will see you as"
+                        value={username}
+                        onSubmit={submitStage2}
+                        setValue={(e) => setUsername(e.target.value)}
+                        onBackClick={() => setStage((prev) => prev - 1)}
+                        placeholder="Enter your username"
+                    />
                 );
             case 3:
                 return (
-                    <div className="stage2-container">
-                        <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
-                                <div className="form-text-container stage-text-container">
-                                    <h2>What's your email address?</h2>
-                                </div>
-                                <label className={`stage2-input-label`}>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={email}
-                                        onChange={(e) =>
-                                            setEmail(e.target.value)
-                                        }
-                                        id=""
-                                        placeholder="Enter your email"
-                                        className="stage2-input stage3-input"
-                                        required
-                                        disabled
-                                        ref={stage3InputRef}
-                                    />
-                                    <button
-                                        className="stage3-button"
-                                        onClick={() => {
-                                            stage3InputRef.current.disabled = false;
-                                            stage3InputRef.current.focus();
-                                        }}
-                                    >
-                                        <img src={pencil} alt="Edit" />
-                                    </button>
-                                </label>
-                            </div>
-                            <div>
-                                <img
-                                    src={silhouette}
-                                    alt="Silhouette"
-                                    className="info-page-image"
-                                />
-                            </div>
-                        </div>
-                        <div className="stage-controls">
-                            <button
-                                className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
-                            >
-                                Back
-                            </button>
-                            <button
-                                className="continue-button"
-                                onClick={submitStage3}
-                            >
-                                Continue
-                            </button>
-                        </div>
-                    </div>
+                    <OneFieldForm
+                        title={"What's your email address?"}
+                        value={email}
+                        onSubmit={submitStage3}
+                        setValue={(e) => setEmail(e.target.value)}
+                        onBackClick={() => setStage((prev) => prev - 1)}
+                        placeholder="Enter your email"
+                        hasEdit={true}
+                        type="email"
+                    />
                 );
             case 4:
                 return (
-                    <div className="stage2-container">
-                        <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
-                                <div className="form-text-container stage-text-container">
-                                    <h2>What's your first name?</h2>
-                                    <Tooltip text="This is your real first name">
-                                        <span className="stage-text-tooltip">
-                                            i
-                                        </span>
-                                    </Tooltip>
-                                </div>
-                                <label className={`stage2-input-label`}>
-                                    <input
-                                        type="text"
-                                        name="firstName"
-                                        value={firstName}
-                                        onChange={(e) =>
-                                            setFirstName(e.target.value)
-                                        }
-                                        id=""
-                                        placeholder="Enter your first name"
-                                        className="stage2-input stage3-input"
-                                        required
-                                        disabled
-                                        ref={stage4InputRef}
-                                    />
-                                    <button
-                                        className="stage3-button"
-                                        onClick={() => {
-                                            stage4InputRef.current.disabled = false;
-                                            stage4InputRef.current.focus();
-                                        }}
-                                    >
-                                        <img src={pencil} alt="Edit" />
-                                    </button>
-                                </label>
-                            </div>
-                            <div>
-                                <img
-                                    src={silhouette}
-                                    alt="Silhouette"
-                                    className="info-page-image"
-                                />
-                            </div>
-                        </div>
-                        <div className="stage-controls">
-                            <button
-                                className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
-                            >
-                                Back
-                            </button>
-                            <button
-                                className="continue-button"
-                                onClick={submitStage4}
-                            >
-                                Continue
-                            </button>
-                        </div>
-                    </div>
+                    <OneFieldForm
+                        title={"What's your first name?"}
+                        tooltip="This is your real first name"
+                        value={firstName}
+                        onSubmit={submitStage4}
+                        setValue={(e) => setFirstName(e.target.value)}
+                        onBackClick={() => setStage((prev) => prev - 1)}
+                        placeholder="Enter your first name"
+                        hasEdit={true}
+                    />
                 );
             case 5:
                 return (
-                    <div className="stage2-container">
-                        <div className="stage2-main-content-container">
-                            <div className="form-container stage2-form-container">
-                                <div className="form-text-container stage-text-container">
-                                    <h2>What's your last name?</h2>
-                                    <Tooltip text="This is your real last name">
-                                        <span className="stage-text-tooltip">
-                                            i
-                                        </span>
-                                    </Tooltip>
-                                </div>
-                                <label className={`stage2-input-label`}>
-                                    <input
-                                        type="text"
-                                        name="lastName"
-                                        value={lastName}
-                                        onChange={(e) =>
-                                            setLastName(e.target.value)
-                                        }
-                                        id=""
-                                        placeholder="Enter your last name"
-                                        className="stage2-input stage3-input"
-                                        required
-                                        disabled
-                                        ref={stage5InputRef}
-                                    />
-                                    <button
-                                        className="stage3-button"
-                                        onClick={() => {
-                                            stage5InputRef.current.disabled = false;
-                                            stage5InputRef.current.focus();
-                                        }}
-                                    >
-                                        <img src={pencil} alt="Edit" />
-                                    </button>
-                                </label>
-                            </div>
-                            <div>
-                                <img
-                                    src={silhouette}
-                                    alt="Silhouette"
-                                    className="info-page-image"
-                                />
-                            </div>
-                        </div>
-                        <div className="stage-controls">
-                            <button
-                                className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
-                            >
-                                Back
-                            </button>
-                            <button
-                                className="continue-button"
-                                onClick={submitStage5}
-                            >
-                                Continue
-                            </button>
-                        </div>
-                    </div>
+                    <OneFieldForm
+                        title={"What's your last name?"}
+                        tooltip="This is your real last name"
+                        value={lastName}
+                        onSubmit={submitStage5}
+                        setValue={(e) => setLastName(e.target.value)}
+                        onBackClick={() => setStage((prev) => prev - 1)}
+                        placeholder="Enter your last name"
+                        hasEdit={true}
+                    />
                 );
             case 6:
                 return (
