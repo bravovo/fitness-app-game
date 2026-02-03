@@ -2,6 +2,8 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
@@ -38,7 +40,6 @@ a:hover {
 }
 
 body {
-    margin: 0;
     font-family: "Cinzel", serif;
     background-color: var(--dark-bg);
     background-attachment: fixed;
