@@ -319,6 +319,8 @@
     color: black;
     white-space: pre-wrap;
     text-align: left;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .assign-separator {

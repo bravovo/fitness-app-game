@@ -42,7 +42,10 @@ function Assignment() {
     const isSubmitDisabled =
         !assignmentData.q1.trim() ||
         !assignmentData.q2.trim() ||
-        !assignmentData.q3.trim();
+        !assignmentData.q3.trim() ||
+        assignmentData.q1.length > 500 ||
+        assignmentData.q2.length > 500 ||
+        assignmentData.q3.length > 500;
 
     const renderForm = () => {
         if (user.assignment && Object.keys(user.assignment).length > 0) {
@@ -203,6 +206,14 @@ function Assignment() {
                                     required
                                     name="q1"
                                     className="question-area"
+                                    style={
+                                        assignmentData.q1.length > 500
+                                            ? {
+                                                  borderColor: "red",
+                                                  boxShadow: "0 0 15px red",
+                                              }
+                                            : {}
+                                    }
                                     placeholder="Write your answer..."
                                     value={assignmentData.q1}
                                     onChange={(e) =>
@@ -227,6 +238,14 @@ function Assignment() {
                                     required
                                     name="q2"
                                     className="question-area"
+                                    style={
+                                        assignmentData.q2.length > 500
+                                            ? {
+                                                  borderColor: "red",
+                                                  boxShadow: "0 0 15px red",
+                                              }
+                                            : {}
+                                    }
                                     placeholder="Write your answer..."
                                     value={assignmentData.q2}
                                     onChange={(e) =>
@@ -250,6 +269,14 @@ function Assignment() {
                                 <textarea
                                     required
                                     name="q3"
+                                    style={
+                                        assignmentData.q3.length > 500
+                                            ? {
+                                                  borderColor: "red",
+                                                  boxShadow: "0 0 15px red",
+                                              }
+                                            : {}
+                                    }
                                     className="question-area"
                                     placeholder="Write your answer..."
                                     value={assignmentData.q3}
