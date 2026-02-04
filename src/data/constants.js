@@ -15,8 +15,8 @@ import improveHealth from "/icons/goals/improve-health.svg";
 import fatLossMuscleGain from "/icons/goals/fat-muscle.svg";
 import others from "/icons/goals/others.svg";
 
-import level1Card from "/images/levels/level1-card.jpg";
-import level1 from "/images/levels/level1.jpg";
+import level0Card from "/images/levels/level1-card.jpg";
+import level0 from "/images/levels/level1.jpg";
 
 export const avatars = [
     avatar1,
@@ -79,36 +79,53 @@ export const levels = [
     {
         level: 0,
         title: "Campfire",
-        cardImg: level1Card,
-        imageUrl: level1,
+        cardImg: level0Card,
+        imageUrl: level0,
         isAvalilable: true,
+        assign: [
+            {
+                name: "q1",
+                title: "Question #1 title goes here related to nutrition?*",
+                limit: 500,
+            },
+            {
+                name: "q2",
+                title: "Question #2 title goes here related to nutrition?*",
+                limit: 500,
+            },
+            {
+                name: "q3",
+                title: "Question #3 title goes here related to nutrition?*",
+                limit: 500,
+            },
+        ],
     },
     {
         level: 1,
         title: "Nutrition",
-        cardImg: level1Card,
-        imageUrl: level1,
+        cardImg: level0Card,
+        imageUrl: level0,
         isAvalilable: false,
     },
     {
         level: 2,
         title: "Exercise",
-        cardImg: level1Card,
-        imageUrl: level1,
+        cardImg: level0Card,
+        imageUrl: level0,
         isAvalilable: false,
     },
     {
         level: 3,
         title: "Mindset",
-        cardImg: level1Card,
-        imageUrl: level1,
+        cardImg: level0Card,
+        imageUrl: level0,
         isAvalilable: false,
     },
     {
         level: 4,
         title: "Game plan",
-        cardImg: level1Card,
-        imageUrl: level1,
+        cardImg: level0Card,
+        imageUrl: level0,
         isAvalilable: false,
     },
 ].reverse();

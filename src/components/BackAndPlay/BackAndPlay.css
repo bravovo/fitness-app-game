@@ -1,0 +1,114 @@
+.play-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.button-back {
+    max-width: 170px;
+    width: 150px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--gold-primary);
+    font-size: larger;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    animation: buttonBackSlide 0.5s ease-in-out;
+}
+
+@keyframes buttonBackSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.button-back-icon {
+    cursor: pointer;
+}
+
+.button-back:hover {
+    gap: 20px;
+}
+
+.button-back:hover .button-back-icon {
+    box-shadow: 0 0 15px var(--gold-muted);
+}
+
+.button-back-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gold-primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-back-icon img {
+    width: 25px;
+}
+
+.level-buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-button-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+}
+
+.card-button-container::before {
+    width: 80%;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    right: 0;
+    height: 10px;
+    background: #5d6a71;
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 2px;
+    border: 2px solid black;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.level-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out;
+}
+
+.level-button:hover {
+    transform: scale(1.1);
+}
+
+.level-button-img {
+    width: 80px;
+    height: 80px;
+}
