@@ -3,7 +3,7 @@ import "./Login.css";
 import logo from "/images/logo.png";
 import silhouette from "/images/silhouette.png";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { user } from "../../data/constants";
 
 function Login() {
@@ -74,11 +74,11 @@ function Login() {
                         Sign in
                     </button>
                 </form>
-                <a href="/forgot-password" className="forgot-pass-link">
+                <Link to="/forgot-password" className="forgot-pass-link">
                     Forgot password?
-                </a>
+                </Link>
                 <p className="sign-up-para">
-                    Don't have an account? <a href="/register">Sign up</a>
+                    Don't have an account? <Link to="/register">Sign up</Link>
                 </p>
             </div>
             <div>
