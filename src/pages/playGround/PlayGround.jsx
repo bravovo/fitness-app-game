@@ -61,7 +61,7 @@ function PlayGround() {
                     <p>Fitness Dungeon</p>
                     <h2>Start your journey</h2>
                 </div>
-                <div className="video-container video-overlay-container">
+                <div className="video-overlay-container">
                     <img src={dungeon} alt="" className="video-overlay-img" />
                     <div className="level-video-overlay">
                         <button className="earth-btn">
@@ -114,7 +114,9 @@ function PlayGround() {
                                 </p>
                             </div>
                             <div className="level-main-header-text">
-                                <h2>Resources</h2>
+                                <h2 className="level-header-secondary">
+                                    Resources
+                                </h2>
                                 <div className="resources-container">
                                     <div className="resource">
                                         <div className="resource-text">
@@ -138,7 +140,9 @@ function PlayGround() {
                                 </div>
                             </div>
                             <div className="level-main-header-text level-links-container">
-                                <h2>Links</h2>
+                                <h2 className="level-header-secondary">
+                                    Links
+                                </h2>
                                 <a href="#" className="level-link">
                                     {" "}
                                     <img src={link} alt="" />
@@ -165,7 +169,7 @@ function PlayGround() {
                         </div>
                     </div>
                 </div>
-                <footer className="stage-controls level-controls">
+                <footer className="level-controls">
                     <button className="back-button" onClick={() => {}}>
                         Button
                     </button>
