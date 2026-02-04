@@ -221,7 +221,7 @@ function Assignment() {
                             htmlFor=""
                             className="assignment-form-input-label"
                         >
-                            Question #2 title goes here related to nutrition?
+                            Question #2 title goes here related to nutrition?*
                             <div className="textarea-wrapper">
                                 <textarea
                                     required

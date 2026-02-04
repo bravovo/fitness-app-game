@@ -14,7 +14,7 @@ function Reward() {
     };
 
     return (
-        <div className="level-page-container">
+        <div className="reward-page-container">
             <div className="reward-form">
                 <h1 className="reward-title">
                     Video 1 Module <br /> Completed!

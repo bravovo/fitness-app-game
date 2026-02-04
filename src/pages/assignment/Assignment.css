@@ -1,5 +1,5 @@
 .assignment-page-container {
-    padding: 0 120px 36px 120px;
+    padding: 0 clamp(16px, 8vw, 120px) 36px;
     justify-content: space-between;
     gap: 36px;
 }
@@ -62,14 +62,15 @@
 }
 
 .assignment-form {
-    width: 40%;
+    width: 100%;
+    max-width: 520px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 16px;
     background-color: #ac9976;
-    padding: 12px 24px 24px 24px;
+    padding: 12px clamp(16px, 3vw, 28px) 24px;
     text-align: center;
     transition: all 0.5s ease-in-out;
     animation: formSlideIn 1s ease-in-out;
@@ -93,19 +94,21 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 0 48px;
 }
 
 .assignment-form h2 {
     width: 100%;
+    max-width: 376px;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: clamp(18px, 2.2vw, 26px);
     color: #d4af37;
 }
 
 .assignment-form p {
+    width: 100%;
+    max-width: 376px;
     margin: 0;
-    font-size: 0.85rem;
+    font-size: clamp(13px, 0.9vw, 15px);
     color: black;
 }
 
@@ -120,13 +123,14 @@
 
 .assignment-form-input-label {
     width: 100%;
-    font-size: 1rem;
+    font-size: clamp(14px, 1.2vw, 16px);
     color: black;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
     margin: 0;
+    text-align: left;
 }
 
 .textarea-wrapper {
@@ -213,7 +217,7 @@
 .completed-assignment-title h2 {
     text-align: left;
     margin: 0;
-    font-size: 1.25rem;
+    font-size: clamp(18px, 1.8vw, 22px);
     color: #1e3a5f;
 }
 
@@ -256,6 +260,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    text-align: left;
     align-items: center;
     gap: 8px;
 }
@@ -305,6 +310,7 @@
     margin: 0;
     font-size: 0.85rem;
     color: #1e3a5f;
+    text-align: left;
 }
 
 .assign-answer p {
@@ -325,4 +331,5 @@
 .other-assign {
     background-color: transparent;
     border: none;
+    padding: 0;
 }
