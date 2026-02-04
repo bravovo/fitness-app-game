@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import "./OneFieldForm.css";
 
-import silhouette from "/images/silhouette.png";
 import pencil from "/icons/pencil.svg";
 
 import Tooltip from "../Tooltip/Tooltip";
+import SilhouetteImg from "../SilhouetteImg/SilhouetteImg";
+import Controls from "../Controls/Controls";
 
 function OneFieldForm({
     title,
@@ -73,22 +74,9 @@ function OneFieldForm({
                         </label>
                     )}
                 </div>
-                <div>
-                    <img
-                        src={silhouette}
-                        alt="Silhouette"
-                        className="info-page-image"
-                    />
-                </div>
+                <SilhouetteImg />
             </div>
-            <div className="stage-controls">
-                <button className="back-button" onClick={onBackClick}>
-                    Back
-                </button>
-                <button className="continue-button" onClick={onSubmit}>
-                    Continue
-                </button>
-            </div>
+            <Controls onSubmit={onSubmit} onBack={onBackClick} />
         </div>
     );
 }

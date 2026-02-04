@@ -1,0 +1,80 @@
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 80px;
+    max-width: 100%;
+    width: 100%;
+
+    background: linear-gradient(
+        180deg,
+        rgba(20, 24, 28, 0.7) 0%,
+        rgba(10, 12, 14, 0.9) 100%
+    );
+
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+    z-index: 10;
+
+    animation: fadeInUp 0.5s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.continue-button {
+    max-width: fit-content;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-muted);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.continue-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 15px var(--gold-primary);
+}
+
+.back-button {
+    max-width: 150px;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: var(--btn-bg);
+    color: var(--btn-add-color);
+    border: 1px solid var(--btn-add-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: var(--gold-primary);
+    color: var(--dark-bg);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 12px var(--gold-primary);
+}

@@ -1,10 +1,10 @@
 import "./Register.css";
 
 import logo from "/images/logo.png";
-import silhouette from "/images/silhouette.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { user } from "../../data/constants";
+import SilhouetteImg from "../../components/SilhouetteImg/SilhouetteImg";
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -23,14 +23,7 @@ function Register() {
     };
 
     return (
-        <div
-            className="login-container"
-            style={{
-                backgroundImage: `url(/images/background.png)`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-        >
+        <div className="login-container">
             <div className="form-container">
                 <img src={logo} alt="Logo" />
                 <div className="form-text-container">
@@ -68,13 +61,7 @@ function Register() {
                     Already have an account? <a href="/">Sign in</a>
                 </p>
             </div>
-            <div>
-                <img
-                    src={silhouette}
-                    alt="Silhouette"
-                    className="login-page-image"
-                />
-            </div>
+            <SilhouetteImg />
         </div>
     );
 }

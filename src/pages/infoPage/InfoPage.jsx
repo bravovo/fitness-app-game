@@ -10,12 +10,12 @@ import logo from "/images/logo.png";
 import dungeon from "/images/dungeon.png";
 import { avatars, user, mainGoals } from "../../data/constants";
 
-import silhouette from "/images/silhouette.png";
-
 import male from "/icons/male.svg";
 import female from "/icons/female.svg";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import SilhouetteImg from "../../components/SilhouetteImg/SilhouetteImg";
+import Controls from "../../components/Controls/Controls";
 
 function InfoPage() {
     const navigate = useNavigate();
@@ -337,28 +337,14 @@ function InfoPage() {
                                         })}
                                 </div>
                             </div>
-                            <div>
-                                <img
-                                    src={silhouette}
-                                    alt="Silhouette"
-                                    className="info-page-image"
-                                />
-                            </div>
+                            <SilhouetteImg
+                                className={isTransitioning ? "image-exit" : ""}
+                            />
                         </div>
-                        <div className="stage-controls">
-                            <button
-                                className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
-                            >
-                                Back
-                            </button>
-                            <button
-                                className="continue-button"
-                                onClick={submitStage6}
-                            >
-                                Continue
-                            </button>
-                        </div>
+                        <Controls
+                            onSubmit={submitStage6}
+                            onBack={() => setStage((prev) => prev - 1)}
+                        />
                     </div>
                 );
             case 7:
@@ -415,28 +401,14 @@ function InfoPage() {
                                     </label>
                                 </div>
                             </div>
-                            <div>
-                                <img
-                                    src={silhouette}
-                                    alt="Silhouette"
-                                    className="info-page-image"
-                                />
-                            </div>
+                            <SilhouetteImg
+                                className={isTransitioning ? "image-exit" : ""}
+                            />
                         </div>
-                        <div className="stage-controls">
-                            <button
-                                className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
-                            >
-                                Back
-                            </button>
-                            <button
-                                className="continue-button"
-                                onClick={submitStage7}
-                            >
-                                Continue
-                            </button>
-                        </div>
+                        <Controls
+                            onSubmit={submitStage7}
+                            onBack={() => setStage((prev) => prev - 1)}
+                        />
                     </div>
                 );
             case 8:
@@ -520,30 +492,14 @@ function InfoPage() {
                                     />
                                 </div>
                             </div>
-                            <div>
-                                <img
-                                    src={silhouette}
-                                    alt="Silhouette"
-                                    className={`info-page-image ${
-                                        isTransitioning ? "image-exit" : ""
-                                    }`}
-                                />
-                            </div>
+                            <SilhouetteImg
+                                className={isTransitioning ? "image-exit" : ""}
+                            />
                         </div>
-                        <div className="stage-controls">
-                            <button
-                                className="back-button"
-                                onClick={() => setStage((prev) => prev - 1)}
-                            >
-                                Back
-                            </button>
-                            <button
-                                className="continue-button"
-                                onClick={submitStage8}
-                            >
-                                Continue
-                            </button>
-                        </div>
+                        <Controls
+                            onSubmit={submitStage8}
+                            onBack={() => setStage((prev) => prev - 1)}
+                        />
                     </div>
                 );
             case 9:
@@ -565,7 +521,7 @@ function InfoPage() {
                                 className="dungeon-img"
                             />
                             <button
-                                className="continue-button enter-world-button"
+                                className="enter-world-button"
                                 onClick={submitStage9}
                             >
                                 Enter the world

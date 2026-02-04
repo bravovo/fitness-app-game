@@ -15,6 +15,7 @@ import taskBoard from "/images/levels/task-board.png";
 import { useEffect, useRef } from "react";
 import { levels } from "../../data/constants";
 import { useNavigate, useParams } from "react-router-dom";
+import Controls from "../../components/Controls/Controls";
 
 function PlayGround() {
     const navigate = useNavigate();
@@ -169,17 +170,14 @@ function PlayGround() {
                         </div>
                     </div>
                 </div>
-                <footer className="level-controls">
-                    <button className="back-button" onClick={() => {}}>
-                        Button
-                    </button>
-                    <button
-                        className="continue-button playground-button"
-                        onClick={markAsWatched}
-                    >
-                        Mark as watched
-                    </button>
-                </footer>
+                <Controls
+                    onSubmit={markAsWatched}
+                    onBack={() => {
+                        navigate(-1);
+                    }}
+                    buttonTitle={"Mark as watched"}
+                    addStyles={{ position: "sticky" }}
+                />
             </div>
         </div>
     );
