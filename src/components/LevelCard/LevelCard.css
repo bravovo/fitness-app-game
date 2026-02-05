@@ -11,6 +11,11 @@
     background-color: rgba(74, 59, 26, 1);
     cursor: pointer;
     transition: all 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.level-card-container.card-ready {
+    opacity: 1;
 }
 
 .card-overlay {

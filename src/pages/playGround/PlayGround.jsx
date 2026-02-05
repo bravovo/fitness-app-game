@@ -7,6 +7,8 @@ import closeIcon from "/icons/close.svg";
 import button from "/images/levels/button.png";
 import taskBoard from "/images/levels/task-board.png";
 import { useEffect, useRef } from "react";
+import Loader from "../../components/Loader/Loader";
+import usePreloadAssets from "../../hooks/usePreloadAssets";
 import { levels } from "../../data/constants";
 import { useNavigate, useParams } from "react-router-dom";
 import Controls from "../../components/Controls/Controls";
@@ -21,12 +23,23 @@ function PlayGround() {
 
     const videoOverlayRef = useRef(null);
 
+    const pageAssetsLoaded = usePreloadAssets([
+        "/images/background-level.png",
+        dungeon,
+        play,
+        closeIcon,
+        button,
+        taskBoard,
+    ]);
+
     useEffect(() => {
+        if (!pageAssetsLoaded) return;
+
         document.body.style.backgroundImage = `url(/images/background-level.png)`;
         return () => {
             document.body.style.overflow = "auto";
         };
-    }, [level.imageUrl]);
+    }, [level.imageUrl, pageAssetsLoaded]);
 
     const openVideoOverlay = () => {
         videoOverlayRef.current?.classList.add("active");
@@ -43,7 +56,13 @@ function PlayGround() {
     };
 
     return (
-        <div className="playground-page-container">
+        <>
+            <Loader isLoading={!pageAssetsLoaded} text={"Loading level assets..."} />
+            <div
+                className={`playground-page-container app-fade-content ${
+                    pageAssetsLoaded ? "content-visible" : ""
+                }`}
+            >
             <div
                 className="video-page-overlay"
                 id="overlay"
@@ -148,7 +167,8 @@ function PlayGround() {
                     addStyles={{ position: "sticky" }}
                 />
             </div>
-        </div>
+            </div>
+        </>
     );
 }
 

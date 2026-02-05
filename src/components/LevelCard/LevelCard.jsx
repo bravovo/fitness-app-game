@@ -2,6 +2,7 @@ import "./LevelCard.css";
 
 import timer from "/icons/header/timer.png";
 import lock from "/icons/lock.svg";
+import usePreloadAssets from "../../hooks/usePreloadAssets";
 
 function LevelCard({
     level,
@@ -11,13 +12,15 @@ function LevelCard({
     children,
     onClick,
 }) {
+    const cardImageLoaded = usePreloadAssets([imageUrl]);
+
     return (
         <div
             className={`level-card-container ${
                 isAvalilable ? "level-active" : ""
-            }`}
+            } ${cardImageLoaded ? "card-ready" : ""}`}
             style={{
-                backgroundImage: `url(${imageUrl})`,
+                backgroundImage: cardImageLoaded ? `url(${imageUrl})` : "none",
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
