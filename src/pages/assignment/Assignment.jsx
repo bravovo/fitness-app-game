@@ -16,6 +16,8 @@ function Assignment() {
     const { id } = useParams();
     const level = levels[levels.findIndex((l) => l.level === parseInt(id))];
 
+    const [isEditOpen, setIsEditOpen] = useState(false);
+
     const initialAssignmentData = level.assign.reduce((acc, { name }) => {
         acc[name] = "";
         return acc;
@@ -49,6 +51,8 @@ function Assignment() {
         }
         console.log("Assignment submitted:", user);
 
+        setIsEditOpen(false);
+
         navigate(`/levels/${level.level}/assignment`);
     };
 
@@ -57,13 +61,26 @@ function Assignment() {
         return trimmed.length === 0 || trimmed.length > 500;
     });
 
+    const editClick = () => {
+        setIsEditOpen(true);
+
+        setAssignmentData(user.assignment);
+    };
+
     const renderForm = () => {
-        if (user.assignment && Object.keys(user.assignment).length > 0) {
+        if (
+            user.assignment &&
+            Object.keys(user.assignment).length > 0 &&
+            !isEditOpen
+        ) {
             return (
                 <div className="assignment-form completed-assign-form">
                     <div className="completed-assignment-title">
                         <h2>Your assignment</h2>
-                        <button className="completed-assign-button">
+                        <button
+                            className="completed-assign-button"
+                            onClick={editClick}
+                        >
                             <img src={pencil} alt="" />
                             Edit
                         </button>
@@ -195,7 +212,7 @@ function Assignment() {
                                 : "assignment-btn-active"
                         }
                     >
-                        Submit assignment
+                        {isEditOpen ? "Save" : "Submit assignment"}
                     </button>
                 </form>
             );
@@ -205,7 +222,7 @@ function Assignment() {
     return (
         <div className="level-page-container assignment-page-container">
             <BackAndPlay
-                onBack={() => navigate(-1)}
+                onBack={() => navigate("/levels")}
                 className="assignment-button-container"
             >
                 <button className="level-button">
