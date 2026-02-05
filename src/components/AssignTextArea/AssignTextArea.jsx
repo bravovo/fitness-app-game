@@ -1,8 +1,6 @@
 import "./AssignTextArea.css";
 
 function AssignTextArea({ name, question, data, setData, limit = 500 }) {
-    console.log(question, data);
-
     return (
         <label htmlFor={name} className="assignment-form-input-label">
             {question}

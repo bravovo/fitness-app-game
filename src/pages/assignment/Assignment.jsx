@@ -16,22 +16,33 @@ function Assignment() {
     const { id } = useParams();
     const level = levels[levels.findIndex((l) => l.level === parseInt(id))];
 
-    const [assignmentData, setAssignmentData] = useState({
-        q1: "",
-        q2: "",
-        q3: "",
-    });
+    const initialAssignmentData = level.assign.reduce((acc, { name }) => {
+        acc[name] = "";
+        return acc;
+    }, {});
+
+    const [assignmentData, setAssignmentData] = useState(initialAssignmentData);
     const navigate = useNavigate();
+
+    const formatDate = (date) => {
+        const d = String(date.getDate()).padStart(2, "0");
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const y = date.getFullYear();
+        return `${d}/${m}/${y}`;
+    };
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-
         if (
-            assignmentData.q1.trim() &&
-            assignmentData.q2.trim() &&
-            assignmentData.q3.trim()
+            !Object.values(assignmentData).some((value) => {
+                const trimmed = value.trim();
+                return trimmed.length === 0;
+            })
         ) {
-            user.assignment = { ...assignmentData };
+            user.assignment = {
+                ...assignmentData,
+                date: formatDate(new Date()),
+            };
         } else {
             alert("Please answer all questions.");
             return;
@@ -41,13 +52,10 @@ function Assignment() {
         navigate(`/levels/${level.level}/assignment`);
     };
 
-    const isSubmitDisabled =
-        !assignmentData.q1.trim() ||
-        !assignmentData.q2.trim() ||
-        !assignmentData.q3.trim() ||
-        assignmentData.q1.length > 500 ||
-        assignmentData.q2.length > 500 ||
-        assignmentData.q3.length > 500;
+    const isSubmitDisabled = Object.values(assignmentData).some((value) => {
+        const trimmed = value.trim();
+        return trimmed.length === 0 || trimmed.length > 500;
+    });
 
     const renderForm = () => {
         if (user.assignment && Object.keys(user.assignment).length > 0) {
@@ -66,14 +74,17 @@ function Assignment() {
                                 <img src={user.avatar || bear} alt="" />
                                 <div className="user-assign-data-text">
                                     <p>You</p>
-                                    <span>13/10/2025</span>
+                                    <span>{user.assignment.date}</span>
                                 </div>
                             </div>
                             <div className="assign-answers">
                                 {level.assign &&
                                     level.assign.map((as) => {
                                         return (
-                                            <div className="assign-answer">
+                                            <div
+                                                className="assign-answer"
+                                                key={as.name}
+                                            >
                                                 <h3>{as.title}</h3>
                                                 <p>
                                                     {user.assignment[as.name]}
@@ -101,7 +112,10 @@ function Assignment() {
                                 {level.assign &&
                                     level.assign.map((as) => {
                                         return (
-                                            <div className="assign-answer">
+                                            <div
+                                                className="assign-answer"
+                                                key={as.name}
+                                            >
                                                 <h3>{as.title}</h3>
                                                 <p>
                                                     Lorem ipsum dolor sit amet,
@@ -157,6 +171,7 @@ function Assignment() {
                             level.assign.map((assign) => {
                                 return (
                                     <AssignTextArea
+                                        key={assign.name}
                                         question={assign.title}
                                         name={assign.name}
                                         limit={assign.limit}
@@ -196,7 +211,7 @@ function Assignment() {
                 <button className="level-button">
                     <img src={button} alt="" className="level-button-img" />
                 </button>
-                <button className="level-button assignment-button">
+                <button className="level-button">
                     <img src={taskBoard} alt="" className="level-button-img" />
                 </button>
             </BackAndPlay>
