@@ -43,7 +43,7 @@ function PlayGround() {
     };
 
     return (
-        <div className="level-page-container">
+        <div className="playground-page-container">
             <div
                 className="video-page-overlay"
                 id="overlay"
