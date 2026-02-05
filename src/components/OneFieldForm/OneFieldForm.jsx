@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./OneFieldForm.css";
 
 import pencil from "/icons/pencil.svg";
@@ -18,7 +18,15 @@ function OneFieldForm({
     hasEdit = false,
     type = "text",
 }) {
-    const stageInputRef = useRef(null);
+    const [isEditing, setIsEditing] = useState(false);
+
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (isEditing) {
+            inputRef.current?.focus();
+        }
+    }, [isEditing]);
 
     return (
         <div className="stage2-container">
@@ -41,15 +49,13 @@ function OneFieldForm({
                                 placeholder="Enter your email"
                                 className="stage2-input stage3-input"
                                 required
-                                disabled
-                                ref={stageInputRef}
+                                disabled={!isEditing}
+                                ref={inputRef}
                             />
                             <button
                                 className="stage3-button"
-                                onClick={() => {
-                                    stageInputRef.current.disabled = false;
-                                    stageInputRef.current.focus();
-                                }}
+                                type="button"
+                                onClick={() => setIsEditing(true)}
                             >
                                 <img src={pencil} alt="Edit" />
                             </button>
