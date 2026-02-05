@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import SilhouetteImg from "../../components/SilhouetteImg/SilhouetteImg";
 import Controls from "../../components/Controls/Controls";
+import usePreloadAssets from "../../hooks/usePreloadAssets";
 
 function InfoPage() {
     const navigate = useNavigate();
@@ -36,16 +37,18 @@ function InfoPage() {
     const [lastName, setLastName] = useState("lastName");
 
     const [stage, setStage] = useState(1);
-    const [loading, setLoading] = useState(true);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 1500);
+    const pageAssetsLoaded = usePreloadAssets([
+        "/images/background.png",
+        dungeon,
+        male,
+        female,
+    ]);
 
-        return () => clearTimeout(timer);
-    }, []);
+    useEffect(() => {
+        if (!pageAssetsLoaded) return;
+    }, [pageAssetsLoaded]);
 
     useEffect(() => {
         return () => {
@@ -536,9 +539,12 @@ function InfoPage() {
 
     return (
         <div className="info-container">
-            <Loader isLoading={loading} text={"Orru felt your intent..."} />
+            <Loader
+                isLoading={!pageAssetsLoaded}
+                text={"Orru felt your intent..."}
+            />
             <img src={logo} alt="Logo" className="top-logo" />
-            {!loading && renderStage()}
+            {pageAssetsLoaded && renderStage()}
         </div>
     );
 }

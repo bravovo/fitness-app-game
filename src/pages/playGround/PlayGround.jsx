@@ -57,116 +57,128 @@ function PlayGround() {
 
     return (
         <>
-            <Loader isLoading={!pageAssetsLoaded} text={"Loading level assets..."} />
+            <Loader isLoading={!pageAssetsLoaded} />
             <div
                 className={`playground-page-container app-fade-content ${
                     pageAssetsLoaded ? "content-visible" : ""
                 }`}
             >
-            <div
-                className="video-page-overlay"
-                id="overlay"
-                ref={videoOverlayRef}
-            >
-                <button
-                    className="earth-btn close-btn"
-                    onClick={handleCloseClick}
+                <div
+                    className="video-page-overlay"
+                    id="overlay"
+                    ref={videoOverlayRef}
                 >
-                    <img src={closeIcon} alt="Close" className="close-img" />
-                </button>
-                <div className="video-page-text-container">
-                    <p>Fitness Dungeon</p>
-                    <h2>Start your journey</h2>
-                </div>
-                <div className="video-overlay-container">
-                    <img src={dungeon} alt="" className="video-overlay-img" />
-                    <div className="level-video-overlay">
-                        <button className="earth-btn">
-                            <img src={play} alt="Play" className="play-img" />
-                        </button>
+                    <button
+                        className="earth-btn close-btn"
+                        onClick={handleCloseClick}
+                    >
+                        <img
+                            src={closeIcon}
+                            alt="Close"
+                            className="close-img"
+                        />
+                    </button>
+                    <div className="video-page-text-container">
+                        <p>Fitness Dungeon</p>
+                        <h2>Start your journey</h2>
+                    </div>
+                    <div className="video-overlay-container">
+                        <img
+                            src={dungeon}
+                            alt=""
+                            className="video-overlay-img"
+                        />
+                        <div className="level-video-overlay">
+                            <button className="earth-btn">
+                                <img
+                                    src={play}
+                                    alt="Play"
+                                    className="play-img"
+                                />
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="playground-container">
-                <div className="playground">
-                    <BackAndPlay onBack={() => navigate(-1)}>
-                        <button className="level-button">
-                            <img
-                                src={button}
-                                alt=""
-                                className="level-button-img"
-                            />
-                        </button>
-                        <button className="level-button">
-                            <img
-                                src={taskBoard}
-                                alt=""
-                                className="level-button-img"
-                            />
-                        </button>
-                    </BackAndPlay>
-                    <div className="level-main-content">
-                        <div className="level-main-text-container">
-                            <div className="level-main-header-text">
-                                <h2 className="level-header-main">
-                                    Build better choices
-                                </h2>
-                                <p>
-                                    Get a quick introduction to the flow,
-                                    understand what level covers, and prepare
-                                    for a smooth, confident start
-                                </p>
-                            </div>
-                            <div className="level-main-header-text">
-                                <h2 className="level-header-secondary">
-                                    Resources
-                                </h2>
-                                <div className="resources-container">
-                                    <LevelResource
-                                        title="Diet plan"
-                                        onClick={() => {}}
-                                    />
-                                    <LevelResource
-                                        title="Workout plan"
-                                        onClick={() => {}}
-                                    />
+                <div className="playground-container">
+                    <div className="playground">
+                        <BackAndPlay onBack={() => navigate(-1)}>
+                            <button className="level-button">
+                                <img
+                                    src={button}
+                                    alt=""
+                                    className="level-button-img"
+                                />
+                            </button>
+                            <button className="level-button">
+                                <img
+                                    src={taskBoard}
+                                    alt=""
+                                    className="level-button-img"
+                                />
+                            </button>
+                        </BackAndPlay>
+                        <div className="level-main-content">
+                            <div className="level-main-text-container">
+                                <div className="level-main-header-text">
+                                    <h2 className="level-header-main">
+                                        Build better choices
+                                    </h2>
+                                    <p>
+                                        Get a quick introduction to the flow,
+                                        understand what level covers, and
+                                        prepare for a smooth, confident start
+                                    </p>
                                 </div>
-                            </div>
-                            <div className="level-main-header-text level-links-container">
-                                <h2 className="level-header-secondary">
-                                    Links
-                                </h2>
-                                <LevelLink title="Facts on diet" />
-                            </div>
-                        </div>
-                        <div className="level-video-container">
-                            <div
-                                className="video-container"
-                                onClick={openVideoOverlay}
-                            >
-                                <img src={dungeon} alt="" />
-                                <div className="level-video-overlay">
-                                    <button className="earth-btn">
-                                        <img
-                                            src={play}
-                                            alt="Play"
-                                            className="play-img"
+                                <div className="level-main-header-text">
+                                    <h2 className="level-header-secondary">
+                                        Resources
+                                    </h2>
+                                    <div className="resources-container">
+                                        <LevelResource
+                                            title="Diet plan"
+                                            onClick={() => {}}
                                         />
-                                    </button>
+                                        <LevelResource
+                                            title="Workout plan"
+                                            onClick={() => {}}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="level-main-header-text level-links-container">
+                                    <h2 className="level-header-secondary">
+                                        Links
+                                    </h2>
+                                    <LevelLink title="Facts on diet" />
+                                </div>
+                            </div>
+                            <div className="level-video-container">
+                                <div
+                                    className="video-container"
+                                    onClick={openVideoOverlay}
+                                >
+                                    <img src={dungeon} alt="" />
+                                    <div className="level-video-overlay">
+                                        <button className="earth-btn">
+                                            <img
+                                                src={play}
+                                                alt="Play"
+                                                className="play-img"
+                                            />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <Controls
+                        onSubmit={markAsWatched}
+                        onBack={() => {
+                            navigate(-1);
+                        }}
+                        buttonTitle={"Mark as watched"}
+                        addStyles={{ position: "sticky" }}
+                    />
                 </div>
-                <Controls
-                    onSubmit={markAsWatched}
-                    onBack={() => {
-                        navigate(-1);
-                    }}
-                    buttonTitle={"Mark as watched"}
-                    addStyles={{ position: "sticky" }}
-                />
-            </div>
             </div>
         </>
     );

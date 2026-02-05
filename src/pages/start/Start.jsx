@@ -59,7 +59,7 @@ function Start() {
 
     return (
         <>
-            <Loader isLoading={!pageAssetsLoaded} text={"Preparing your map..."} />
+            <Loader isLoading={!pageAssetsLoaded} />
             <div id="overlay" ref={overlayRef} onClick={overlayClickHandler}>
                 <div className="overlay-container">
                     <div className="overlay-text" ref={overlayTextRef}>
