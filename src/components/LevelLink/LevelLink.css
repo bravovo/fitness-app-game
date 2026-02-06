@@ -1,0 +1,26 @@
+.level-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-size: clamp(14px, 1.2vw, 16px);
+}
+
+.level-link span {
+    color: white;
+    border-bottom: 1px solid white;
+    transition: all 0.3s ease-in;
+}
+
+.level-link:hover span {
+    border-bottom: 1px solid var(--gold-muted);
+}
+
+.level-link img {
+    width: 100%;
+    max-width: 25px;
+    height: auto;
+    display: block;
+}

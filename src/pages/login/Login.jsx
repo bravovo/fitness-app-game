@@ -1,10 +1,10 @@
 import "./Login.css";
 
 import logo from "/images/logo.png";
-import silhouette from "/images/silhouette.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { user } from "../../data/constants";
+import SilhouetteImg from "../../components/SilhouetteImg/SilhouetteImg";
 
 function Login() {
     const navigate = useNavigate();
@@ -33,14 +33,7 @@ function Login() {
     };
 
     return (
-        <div
-            className="login-container"
-            style={{
-                backgroundImage: `url(/images/background.png)`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-        >
+        <div className="login-container">
             <div className="form-container">
                 <img src={logo} alt="Logo" />
                 <div className="form-text-container">
@@ -81,13 +74,7 @@ function Login() {
                     Don't have an account? <Link to="/register">Sign up</Link>
                 </p>
             </div>
-            <div>
-                <img
-                    src={silhouette}
-                    alt="Silhouette"
-                    className="login-page-image"
-                />
-            </div>
+            <SilhouetteImg />
         </div>
     );
 }

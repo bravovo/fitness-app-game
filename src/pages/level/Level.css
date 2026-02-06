@@ -5,12 +5,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 36px;
 }
 
 .level-form {
-    max-width: 60%;
-
     width: 100%;
+    max-width: 920px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +22,7 @@
         rgba(10, 12, 14, 0.97) 100%
     );
     border: 0.6px solid rgba(212, 175, 55, 0.3);
-    padding: 64px;
+    padding: clamp(32px, 5vw, 64px);
     text-align: center;
     transition: all 0.5s ease-in-out;
     animation: fadeInScale 1s ease-in-out;
@@ -47,19 +47,19 @@
 .level-form h1 {
     width: 100%;
     margin: 0;
-    font-size: 5rem;
+    font-size: clamp(28px, 5vw, 64px);
     color: var(--gold-primary);
 }
 
 .level-form h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: clamp(20px, 2.2vw, 28px);
     color: white;
 }
 
 .level-form p {
     margin: 0;
-    font-size: 1rem;
+    font-size: clamp(14px, 1.2vw, 16px);
     color: white;
 }
 

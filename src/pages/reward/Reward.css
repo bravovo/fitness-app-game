@@ -1,7 +1,16 @@
-.reward-form {
-    max-width: 60%;
-
+.reward-page-container {
     width: 100%;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 36px;
+}
+
+.reward-form {
+    width: 100%;
+    max-width: 920px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,19 +47,22 @@
 .reward-form h1 {
     width: 100%;
     margin: 0;
-    font-size: 2.5rem;
+    font-size: clamp(26px, 3.8vw, 44px);
+    line-height: 1.15;
     color: var(--gold-primary);
 }
 
 .reward-form h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: clamp(18px, 2.2vw, 26px);
+    line-height: 1.25;
     color: white;
 }
 
 .reward-form p {
     margin: 0;
-    font-size: 1rem;
+    font-size: clamp(14px, 1.2vw, 16px);
+    line-height: 1.6;
     color: white;
 }
 
@@ -59,7 +71,8 @@
 }
 
 .reward-card-container {
-    width: 70%;
+    width: 100%;
+    max-width: 600px;
     height: 150px;
     display: flex;
     flex-direction: column;

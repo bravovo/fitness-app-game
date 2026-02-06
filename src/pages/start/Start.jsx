@@ -10,7 +10,9 @@ import { useEffect, useRef } from "react";
 import eagle from "/images/eagle.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 import { levels, spokeWithMax } from "../../data/constants";
+import usePreloadAssets from "../../hooks/usePreloadAssets";
 
 function Start() {
     const navigate = useNavigate();
@@ -18,6 +20,14 @@ function Start() {
     const overlayRef = useRef(null);
     const overlayTextRef = useRef(null);
     const [stage, setStage] = useState(0);
+
+    const pageAssetsLoaded = usePreloadAssets([
+        "/images/background.png",
+        eagle,
+        button,
+        taskBoard,
+        ...levels.map((levelData) => levelData.cardImg),
+    ]);
 
     const overlayClickHandler = (e) => {
         console.log(e.target);
@@ -38,15 +48,18 @@ function Start() {
     };
 
     useEffect(() => {
+        if (!pageAssetsLoaded) return;
+
         document.body.style.backgroundImage = "url(/images/background.png)";
         if (!spokeWithMax.value) {
             overlayRef.current?.classList.add("active");
             document.body.style.overflow = "hidden";
         }
-    }, []);
+    }, [pageAssetsLoaded]);
 
     return (
         <>
+            <Loader isLoading={!pageAssetsLoaded} />
             <div id="overlay" ref={overlayRef} onClick={overlayClickHandler}>
                 <div className="overlay-container">
                     <div className="overlay-text" ref={overlayTextRef}>
@@ -74,7 +87,11 @@ function Start() {
                     <img src={eagle} alt="Eagle" className="overlay-img" />
                 </div>
             </div>
-            <div className="page-container">
+            <div
+                className={`page-container app-fade-content ${
+                    pageAssetsLoaded ? "content-visible" : ""
+                }`}
+            >
                 <div className="levels-container">
                     {levels &&
                         levels.map((levelData) => {

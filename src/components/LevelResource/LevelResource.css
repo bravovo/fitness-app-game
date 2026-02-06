@@ -1,0 +1,43 @@
+.resource {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 0;
+    background: radial-gradient(
+        circle,
+        rgba(34, 65, 84, 0.7),
+        rgba(34, 65, 84, 1)
+    );
+    border: 1px solid var(--gold-muted);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease-out;
+}
+
+.resource:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--gold-muted);
+}
+
+.resource-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(14px, 1.2vw, 16px);
+    text-align: left;
+}
+
+.resource img {
+    width: 100%;
+    max-width: 35px;
+    height: auto;
+    display: block;
+}
+
+.resource button {
+    border: none;
+    background: none;
+    padding: 0;
+}

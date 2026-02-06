@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import "./ForgotPassword.css";
 
 import logo from "/images/logo.png";
-import silhouette from "/images/silhouette.png";
 import { useState } from "react";
 import { user } from "../../data/constants";
+import SilhouetteImg from "../../components/SilhouetteImg/SilhouetteImg";
 
 function ForgotPassword() {
     const navigate = useNavigate();
@@ -44,14 +44,7 @@ function ForgotPassword() {
     };
 
     return (
-        <div
-            className="login-container"
-            style={{
-                backgroundImage: `url(/images/background.png)`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-        >
+        <div className="login-container">
             <div className="form-container">
                 <img src={logo} alt="Logo" />
                 <div className="form-text-container">
@@ -107,13 +100,7 @@ function ForgotPassword() {
                     </form>
                 )}
             </div>
-            <div>
-                <img
-                    src={silhouette}
-                    alt="Silhouette"
-                    className="login-page-image"
-                />
-            </div>
+            <SilhouetteImg />
         </div>
     );
 }
