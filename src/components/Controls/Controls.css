@@ -33,6 +33,21 @@
     }
 }
 
+.controls.hide {
+    animation: fadeOutDown 0.5s ease forwards;
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
 .continue-button {
     max-width: fit-content;
     width: 100%;

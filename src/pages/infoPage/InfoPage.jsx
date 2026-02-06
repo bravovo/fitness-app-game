@@ -416,12 +416,12 @@ function InfoPage() {
                 );
             case 8:
                 return (
-                    <div
-                        className={`stage2-container ${
-                            isTransitioning ? "stage-exit" : ""
-                        }`}
-                    >
-                        <div className="stage2-main-content-container">
+                    <div className={`stage2-container`}>
+                        <div
+                            className={`stage2-main-content-container ${
+                                isTransitioning ? "stage-exit" : ""
+                            }`}
+                        >
                             <div className="form-container stage2-form-container">
                                 <div className="form-text-container stage-text-container">
                                     <h2>Fill the details below</h2>
@@ -502,6 +502,7 @@ function InfoPage() {
                         <Controls
                             onSubmit={submitStage8}
                             onBack={() => setStage((prev) => prev - 1)}
+                            isHiding={isTransitioning}
                         />
                     </div>
                 );
